@@ -39,12 +39,14 @@
 #define ID_TEX_MARIO 0
 #define ID_TEX_ENEMY 10
 #define ID_TEX_MISC 20
+#define ID_TEX_JASON 30
 
 #define ID_SPRITE_BRICK 20001
 
 #define TEXTURES_DIR L"textures"
 #define TEXTURE_PATH_MARIO TEXTURES_DIR "\\mario.png"
 #define TEXTURE_PATH_MISC TEXTURES_DIR "\\misc.png"
+#define TEXTURE_PATH_JASON TEXTURES_DIR "\\JasonSohpia.png"
 
 #define MARIO_START_X 200.0f
 #define MARIO_START_Y 10.0f
@@ -53,7 +55,7 @@
 #define BRICK_Y GROUND_Y + 20.0f
 #define NUM_BRICKS 50
 
-CMario* mario = NULL;
+CMario* jason = NULL;
 
 CSampleKeyHandler* keyHandler;
 
@@ -80,53 +82,57 @@ void LoadResources()
 {
 	CTextures * textures = CTextures::GetInstance();
 
-	textures->Add(ID_TEX_MARIO, TEXTURE_PATH_MARIO);
+	// textures->Add(ID_TEX_MARIO, TEXTURE_PATH_MARIO);
 	textures->Add(ID_TEX_MISC, TEXTURE_PATH_MISC);
+	textures->Add(ID_TEX_JASON, TEXTURE_PATH_JASON);
 
 	CSprites * sprites = CSprites::GetInstance();
 	CAnimations * animations = CAnimations::GetInstance();
-	
-	LPTEXTURE texMario = textures->Get(ID_TEX_MARIO);
 
-	sprites->Add(10001, 246, 154, 260, 181, texMario);
+	// Json Object
+	LPTEXTURE texJason = textures->Get(ID_TEX_JASON);
 
-	sprites->Add(10002, 275, 154, 290, 181, texMario);
-	sprites->Add(10003, 304, 154, 321, 181, texMario);
+	// IDLE RIGHT
+	sprites->Add(10001, 21, 29, 28, 45, texJason);
 
-	sprites->Add(10011, 186, 154, 200, 181, texMario);
+	sprites->Add(10002, 11, 29, 19, 45, texJason);
+	sprites->Add(10003, 2, 29, 10, 45, texJason);
 
-	sprites->Add(10012, 155, 154, 170, 181, texMario);
-	sprites->Add(10013, 125, 154, 140, 181, texMario);
+	// IDLE LEFT
+	sprites->Add(10011, 21, 29, 28, 45, texJason);
+
+	sprites->Add(10012, 11, 29, 19, 45, texJason);
+	sprites->Add(10013, 2, 29, 10, 45, texJason);
 
 	// RUNNING RIGHT 
-	sprites->Add(10021, 335, 154, 335 + 18, 154 +26, texMario);
-	sprites->Add(10022, 363, 154, 363 + 18, 154 + 26, texMario);
-	sprites->Add(10023, 393, 154, 393 + 18, 154 + 26, texMario);
+	sprites->Add(10021, 21, 29, 28, 45, texJason);
+	sprites->Add(10022, 11, 29, 19, 45, texJason);
+	sprites->Add(10023, 2, 29, 10, 45, texJason);
 
 	// RUNNING LEFT
-	sprites->Add(10031, 92, 154, 92 + 18, 154 + 26, texMario);
-	sprites->Add(10032, 66, 154, 66 + 18, 154 + 26, texMario);
-	sprites->Add(10033, 35, 154, 35 + 18, 154 + 26, texMario);
+	sprites->Add(10031, 21, 29, 28, 45, texJason);
+	sprites->Add(10032, 11, 29, 19, 45, texJason);
+	sprites->Add(10033, 2, 29, 10, 45, texJason);
 
 	// JUMP WALK RIGHT & LEFT 
-	sprites->Add(10041, 395, 275, 395 + 16, 275 + 25, texMario);
-	sprites->Add(10042, 35, 275, 35 + 16, 275 + 25, texMario);
+	sprites->Add(10041, 21, 29, 28, 45, texJason);
+	sprites->Add(10042, 11, 29, 19, 45, texJason);
 
 	// JUMP RUN RIGHT & LEFT 
-	sprites->Add(10043, 395, 195, 395 + 18, 195 + 25, texMario);
-	sprites->Add(10044, 33, 195, 33 + 18, 195 + 25, texMario);
+	sprites->Add(10043, 21, 29, 28, 45, texJason);
+	sprites->Add(10044, 11, 29, 19, 45, texJason);
 
 	// SIT RIGHT/LEFT
-	sprites->Add(10051, 426, 239, 426 + 14, 239 + 17, texMario);
-	sprites->Add(10052, 5, 239, 5 + 14, 239 + 17, texMario);
+	sprites->Add(10051, 21, 29, 28, 45, texJason);
+	sprites->Add(10052, 11, 29, 19, 45, texJason);
 
 	// BRACING RIGHT/LEFT
-	sprites->Add(10061, 425, 154, 425 + 15, 154 + 27, texMario);
-	sprites->Add(10062, 5, 154, 5 + 15, 154 + 27, texMario);
+	sprites->Add(10061, 21, 29, 28, 45, texJason);
+	sprites->Add(10062, 11, 29, 19, 45, texJason);
 
 	LPANIMATION ani;
 
-	ani = new CAnimation(100);	
+	ani = new CAnimation(100);
 	ani->Add(10001);
 	animations->Add(ID_ANI_MARIO_IDLE_RIGHT, ani);
 
@@ -162,7 +168,7 @@ void LoadResources()
 	ani->Add(10041);
 	animations->Add(ID_ANI_MARIO_JUMP_WALK_RIGHT, ani);
 
-	ani = new CAnimation(100);	
+	ani = new CAnimation(100);
 	ani->Add(10042);
 	animations->Add(ID_ANI_MARIO_JUMP_WALK_LEFT, ani);
 
@@ -190,8 +196,117 @@ void LoadResources()
 	ani->Add(10062);
 	animations->Add(ID_ANI_MARIO_BRACE_LEFT, ani);
 
-	mario = new CMario(MARIO_START_X, MARIO_START_Y);
-	objects.push_back(mario);
+	jason = new CMario(MARIO_START_X, MARIO_START_Y);
+	objects.push_back(jason);
+
+	
+	// Mario Object
+	//LPTEXTURE texMario = textures->Get(ID_TEX_MARIO);
+
+	//sprites->Add(10001, 246, 154, 260, 181, texMario);
+
+	//sprites->Add(10002, 275, 154, 290, 181, texMario);
+	//sprites->Add(10003, 304, 154, 321, 181, texMario);
+
+	//sprites->Add(10011, 186, 154, 200, 181, texMario);
+
+	//sprites->Add(10012, 155, 154, 170, 181, texMario);
+	//sprites->Add(10013, 125, 154, 140, 181, texMario);
+
+	//// RUNNING RIGHT 
+	//sprites->Add(10021, 335, 154, 335 + 18, 154 +26, texMario);
+	//sprites->Add(10022, 363, 154, 363 + 18, 154 + 26, texMario);
+	//sprites->Add(10023, 393, 154, 393 + 18, 154 + 26, texMario);
+
+	//// RUNNING LEFT
+	//sprites->Add(10031, 92, 154, 92 + 18, 154 + 26, texMario);
+	//sprites->Add(10032, 66, 154, 66 + 18, 154 + 26, texMario);
+	//sprites->Add(10033, 35, 154, 35 + 18, 154 + 26, texMario);
+
+	//// JUMP WALK RIGHT & LEFT 
+	//sprites->Add(10041, 395, 275, 395 + 16, 275 + 25, texMario);
+	//sprites->Add(10042, 35, 275, 35 + 16, 275 + 25, texMario);
+
+	//// JUMP RUN RIGHT & LEFT 
+	//sprites->Add(10043, 395, 195, 395 + 18, 195 + 25, texMario);
+	//sprites->Add(10044, 33, 195, 33 + 18, 195 + 25, texMario);
+
+	//// SIT RIGHT/LEFT
+	//sprites->Add(10051, 426, 239, 426 + 14, 239 + 17, texMario);
+	//sprites->Add(10052, 5, 239, 5 + 14, 239 + 17, texMario);
+
+	//// BRACING RIGHT/LEFT
+	//sprites->Add(10061, 425, 154, 425 + 15, 154 + 27, texMario);
+	//sprites->Add(10062, 5, 154, 5 + 15, 154 + 27, texMario);
+
+	//LPANIMATION ani;
+
+	//ani = new CAnimation(100);	
+	//ani->Add(10001);
+	//animations->Add(ID_ANI_MARIO_IDLE_RIGHT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10011);
+	//animations->Add(ID_ANI_MARIO_IDLE_LEFT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10001);
+	//ani->Add(10002);
+	//ani->Add(10003);
+	//animations->Add(ID_ANI_MARIO_WALKING_RIGHT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10011);
+	//ani->Add(10012);
+	//ani->Add(10013);
+	//animations->Add(ID_ANI_MARIO_WALKING_LEFT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10021);
+	//ani->Add(10022);
+	//ani->Add(10023);
+	//animations->Add(ID_ANI_MARIO_RUNNING_RIGHT, ani);
+
+	//ani = new CAnimation(50);	// Mario runs faster hence animation speed should be faster
+	//ani->Add(10031);
+	//ani->Add(10032);
+	//ani->Add(10033);
+	//animations->Add(ID_ANI_MARIO_RUNNING_LEFT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10041);
+	//animations->Add(ID_ANI_MARIO_JUMP_WALK_RIGHT, ani);
+
+	//ani = new CAnimation(100);	
+	//ani->Add(10042);
+	//animations->Add(ID_ANI_MARIO_JUMP_WALK_LEFT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10043);
+	//animations->Add(ID_ANI_MARIO_JUMP_RUN_RIGHT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10044);
+	//animations->Add(ID_ANI_MARIO_JUMP_RUN_LEFT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10051);
+	//animations->Add(ID_ANI_MARIO_SIT_RIGHT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10052);
+	//animations->Add(ID_ANI_MARIO_SIT_LEFT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10061);
+	//animations->Add(ID_ANI_MARIO_BRACE_RIGHT, ani);
+
+	//ani = new CAnimation(100);
+	//ani->Add(10062);
+	//animations->Add(ID_ANI_MARIO_BRACE_LEFT, ani);
+
+	// mario = new CMario(MARIO_START_X, MARIO_START_Y);
+	// objects.push_back(mario);
 
 	// Brick objects 
 	LPTEXTURE texMisc = textures->Get(ID_TEX_MISC);

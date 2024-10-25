@@ -5,7 +5,7 @@
 
 #include "Mario.h"
 
-extern CMario* mario;
+extern CMario* jason;
 
 void CSampleKeyHandler::OnKeyDown(int KeyCode)
 {
@@ -13,7 +13,7 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_S:
-		mario->SetState(MARIO_STATE_JUMP);
+		jason->SetState(MARIO_STATE_JUMP);
 		break;
 	}
 }
@@ -24,10 +24,10 @@ void CSampleKeyHandler::OnKeyUp(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_S:
-		mario->SetState(MARIO_STATE_RELEASE_JUMP);
+		jason->SetState(MARIO_STATE_RELEASE_JUMP);
 		break;
 	case DIK_DOWN:
-		mario->SetState(MARIO_STATE_SIT_RELEASE);
+		jason->SetState(MARIO_STATE_SIT_RELEASE);
 		break;
 	}
 }
@@ -39,24 +39,24 @@ void CSampleKeyHandler::KeyState(BYTE *states)
 	if (game->IsKeyDown(DIK_RIGHT))
 	{
 		if (game->IsKeyDown(DIK_A))
-			mario->SetState(MARIO_STATE_RUNNING_RIGHT);
+			jason->SetState(MARIO_STATE_RUNNING_RIGHT);
 		else
-			mario->SetState(MARIO_STATE_WALKING_RIGHT);
+			jason->SetState(MARIO_STATE_WALKING_RIGHT);
 	}
 	else if (game->IsKeyDown(DIK_LEFT))
 	{
 		if (game->IsKeyDown(DIK_A))
-			mario->SetState(MARIO_STATE_RUNNING_LEFT);
+			jason->SetState(MARIO_STATE_RUNNING_LEFT);
 		else
-			mario->SetState(MARIO_STATE_WALKING_LEFT);
+			jason->SetState(MARIO_STATE_WALKING_LEFT);
 	}
 	else
-		mario->SetState(MARIO_STATE_IDLE);
+		jason->SetState(MARIO_STATE_IDLE);
 	
 	// Sitting state has higher priority 
 	if (game->IsKeyDown(DIK_DOWN))
 	{
-		mario->SetState(MARIO_STATE_SIT);
+		jason->SetState(MARIO_STATE_SIT);
 	}
 
 }
