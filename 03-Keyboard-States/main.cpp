@@ -23,6 +23,8 @@
 
 #include "Mario.h"
 #include "Brick.h"
+#include "Fbird.h"
+
 
 #include "SampleKeyEventHandler.h"
 
@@ -40,6 +42,7 @@
 #define ID_TEX_ENEMY 10
 #define ID_TEX_MISC 20
 #define ID_TEX_JASON 30
+#define ID_TEX_FBIRD 40
 
 #define ID_SPRITE_BRICK 20001
 
@@ -56,6 +59,7 @@
 #define NUM_BRICKS 50
 
 CMario* mario = NULL;
+Fbird* fbird = NULL;
 
 CSampleKeyHandler* keyHandler;
 
@@ -83,6 +87,7 @@ void LoadResources()
 	CTextures * textures = CTextures::GetInstance();
 
 	textures->Add(ID_TEX_JASON, TEXTURE_PATH_JASON);
+	textures->Add(ID_TEX_FBIRD, TEXTURE_PATH_JASON);
 	textures->Add(ID_TEX_MISC, TEXTURE_PATH_MISC);
 
 	CSprites * sprites = CSprites::GetInstance();
@@ -197,6 +202,26 @@ void LoadResources()
 
 	mario = new CMario(MARIO_START_X, MARIO_START_Y);
 	objects.push_back(mario);
+
+	// Fbird objects
+	LPTEXTURE texFbird = textures->Get(ID_TEX_FBIRD); // khai bao texture  nv 
+
+	sprites->Add(30301, 2, 29, 10, 46, texFbird); //id va vi tri trong hinh 
+	sprites->Add(30302, 2, 29, 10, 46, texFbird);
+	sprites->Add(30303, 2, 29, 10, 46, texFbird);
+
+	ani = new CAnimation(100);//tao ani 
+	ani->Add(30301);
+	ani->Add(30302);
+	ani->Add(30303);
+	animations->Add(410, ani);
+
+	ani = new CAnimation(100);
+	ani->Add(30302);
+	animations->Add(411, ani);
+
+	fbird = new Fbird(MARIO_START_X, MARIO_START_Y, 1.0f); 
+	objects.push_back(fbird);
 
 	// Brick objects 
 	LPTEXTURE texMisc = textures->Get(ID_TEX_MISC);

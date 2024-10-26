@@ -131,6 +131,7 @@
     <ClCompile Include="..\02-Sprite\Sprite.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="Fbird.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="Fbird.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="Mario.h" />
     <ClInclude Include="debug.h" />
