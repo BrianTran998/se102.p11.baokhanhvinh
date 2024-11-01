@@ -2,6 +2,6 @@
 
 void CBrick::Render()
 {
-	CAnimations* animations = CAnimations::GetInstance();
-	animations->Get(ID_ANI_BRICK)->Render(x,y);
+	CAnimations *animations = CAnimations::GetInstance();
+	animations->Get(ID_ANI_BRICK + this->step)->Render(x, y);
 }

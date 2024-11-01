@@ -47,7 +47,7 @@
 
 #define TEXTURES_DIR L"textures"
 #define TEXTURE_PATH_MARIO TEXTURES_DIR "\\mario.png"
-#define TEXTURE_PATH_MISC TEXTURES_DIR "\\misc.png"
+#define TEXTURE_PATH_MISC TEXTURES_DIR "\\level2-side.png"
 #define TEXTURE_PATH_JASON TEXTURES_DIR "\\JasonSohpia.png"
 
 #define MARIO_START_X 200.0f
@@ -58,7 +58,7 @@
 #define ENEMY_START_VX 0.1f
 
 #define BRICK_X 0.0f
-#define BRICK_Y GROUND_Y + 20.0f
+#define BRICK_Y GROUND_Y - 57.5f
 #define NUM_BRICKS 50
 
 CMario* jason = NULL;
@@ -95,6 +95,22 @@ void LoadResources()
 
 	CSprites * sprites = CSprites::GetInstance();
 	CAnimations * animations = CAnimations::GetInstance();
+	LPANIMATION ani;
+
+	// Brick objects
+	LPTEXTURE texMisc = textures->Get(ID_TEX_MISC);
+	for (int i = 0; i < NUM_BRICKS; i++)
+	{
+		int step = i * 6;
+		sprites->Add(ID_SPRITE_BRICK + i, 33 + step, 0, 49 + step, 186, texMisc);
+
+		ani = new CAnimation(100);
+		ani->Add(ID_SPRITE_BRICK + i);
+		animations->Add(ID_ANI_BRICK + i, ani);
+
+		CBrick *b = new CBrick(BRICK_X + step, BRICK_Y, i);
+		objects.push_back(b);
+	}
 
 	// Json Object
 	LPTEXTURE texJason = textures->Get(ID_TEX_JASON);
@@ -136,8 +152,6 @@ void LoadResources()
 	// BRACING RIGHT/LEFT
 	sprites->Add(10061, 21, 29, 28, 45, texJason);
 	sprites->Add(10062, 11, 29, 19, 45, texJason);
-
-	LPANIMATION ani;
 
 	ani = new CAnimation(100);
 	ani->Add(10001);
@@ -233,18 +247,12 @@ void LoadResources()
 	objects.push_back(enemy);
 
 	// Brick objects 
-	LPTEXTURE texMisc = textures->Get(ID_TEX_MISC);
-	sprites->Add(ID_SPRITE_BRICK, 372, 153, 372+15, 153+15, texMisc);
+	// LPTEXTURE texMisc = textures->Get(ID_TEX_MISC);
+	// sprites->Add(ID_SPRITE_BRICK, 372, 153, 372+15, 153+15, texMisc);
 
-	ani = new CAnimation(100);
-	ani->Add(ID_SPRITE_BRICK);
-	animations->Add(ID_ANI_BRICK,ani);
-
-	for (int i=0;i<NUM_BRICKS;i++) 
-	{
-		CBrick* b = new CBrick(BRICK_X + i * BRICK_WIDTH, BRICK_Y);
-		objects.push_back(b);
-	}
+	// ani = new CAnimation(100);
+	// ani->Add(ID_SPRITE_BRICK);
+	// animations->Add(ID_ANI_BRICK,ani);
 }
 
 /*
