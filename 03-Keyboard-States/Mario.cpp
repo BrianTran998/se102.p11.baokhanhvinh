@@ -12,7 +12,7 @@ void CMario::Update(DWORD dt)
 
 	if (abs(vx) > abs(maxVx)) vx = maxVx;
 
-	DebugOutTitle(L"vx = %0.5f", this->vx);
+	//DebugOutTitle(L"vy = %0.5f", this->vy);
 
 
 	// BAD & sinful platform collision handling, see next sample for correct collision handling

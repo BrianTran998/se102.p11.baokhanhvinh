@@ -9,12 +9,13 @@ using namespace std;
 class CGameObject
 {
 protected:
+	//Location
 	float x; 
 	float y;
-
+	//Velocity
 	float vx;
 	float vy;
-
+	//Direction
 	int nx;	 
 
 	int state;									

@@ -22,6 +22,7 @@
 #include "Sprites.h"
 
 #include "Mario.h"
+#include "CJasonSmall.h"
 #include "Brick.h"
 
 #include "SampleKeyEventHandler.h"
@@ -39,6 +40,7 @@
 #define ID_TEX_MARIO 0
 #define ID_TEX_ENEMY 10
 #define ID_TEX_MISC 20
+#define ID_TEX_JASON 30
 
 #define ID_SPRITE_BRICK 20001
 
@@ -46,18 +48,28 @@
 #define TEXTURE_PATH_MARIO TEXTURES_DIR "\\mario.png"
 #define TEXTURE_PATH_MISC TEXTURES_DIR "\\misc.png"
 
+#define TEXTURE_PATH_JASON TEXTURES_DIR "\\Jason.png" 
+
 #define MARIO_START_X 200.0f
 #define MARIO_START_Y 10.0f
+
+#define JASON_SMALL_START_X 100.0f
+#define JASON_SMALL_START_Y 10.0f
 
 #define BRICK_X 0.0f
 #define BRICK_Y GROUND_Y + 20.0f
 #define NUM_BRICKS 50
 
 CMario* mario = NULL;
+CJasonSmall* jason_small = NULL;
 
 CSampleKeyHandler* keyHandler;
 
 vector<LPGAMEOBJECT> objects;
+
+CTextures* textures = CTextures::GetInstance();
+CSprites* sprites = CSprites::GetInstance();
+CAnimations* animations = CAnimations::GetInstance();
 
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -78,15 +90,65 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 */
 void LoadResources()
 {
-	CTextures * textures = CTextures::GetInstance();
 
 	textures->Add(ID_TEX_MARIO, TEXTURE_PATH_MARIO);
 	textures->Add(ID_TEX_MISC, TEXTURE_PATH_MISC);
-
-	CSprites * sprites = CSprites::GetInstance();
-	CAnimations * animations = CAnimations::GetInstance();
+	textures->Add(ID_TEX_JASON, TEXTURE_PATH_JASON);
 	
 	LPTEXTURE texMario = textures->Get(ID_TEX_MARIO);
+	LPTEXTURE texJason = textures->Get(ID_TEX_JASON);
+	
+	////Jason small idle left
+	//sprites->Add(30001, 3, 30, 10, 45, texJason);
+
+	////Jason small walk left
+	//sprites->Add(30002, 12, 30, 19, 45, texJason);
+	//sprites->Add(30003, 21, 30, 28, 45, texJason);
+	//sprites->Add(30004, 30, 30, 37, 45, texJason);
+
+	////Jason small crawl left
+	//sprites->Add(30005, 3, 47, 18, 54, texJason);
+	//sprites->Add(30006, 20, 47, 35, 54, texJason);
+
+	////Jason small climb ladder
+	//sprites->Add(30007, 40, 47, 49, 62, texJason);
+	//sprites->Add(30008, 57, 47, 66, 62, texJason);
+
+	////Jason small swim
+	//sprites->Add(30009, 39, 36, 53, 45, texJason);
+	//sprites->Add(30010, 56, 36, 70, 45, texJason);
+
+	////Jason small dead
+	//sprites->Add(30011, 3, 64, 18, 79, texJason);
+	//sprites->Add(30012, 20, 64, 35, 79, texJason);
+	//sprites->Add(30013, 37, 64, 52, 79, texJason);
+	//sprites->Add(30014, 54, 64, 69, 79, texJason);
+	//sprites->Add(30015, 3, 81, 18, 96, texJason);
+	//sprites->Add(30016, 20, 89, 35, 96, texJason);
+
+	////Jason big turn down
+	//sprites->Add(30017, 208, 3, 231, 34, texJason);
+	//sprites->Add(30018, 233, 3, 256, 34, texJason);
+	//sprites->Add(30019, 258, 3, 281, 34, texJason);
+
+	////Jason big turn up
+	//sprites->Add(30020, 208, 36, 231, 67, texJason);
+	//sprites->Add(30021, 233, 36, 256, 67, texJason);
+	//sprites->Add(30022, 258, 36, 281, 67, texJason);
+
+	////Jason big turn left
+	//sprites->Add(30023, 208, 69, 231, 100, texJason);
+	//sprites->Add(30024, 233, 69, 256, 100, texJason);
+	//sprites->Add(30025, 258, 69, 281, 100, texJason);
+
+	////Jason big dead
+	//sprites->Add(30026, 283, 3, 306, 34, texJason);
+	//sprites->Add(30027, 308, 3, 331, 34, texJason);
+	//sprites->Add(30028, 333, 3, 356, 34, texJason);
+	//sprites->Add(30029, 358, 3, 381, 34, texJason);
+	//sprites->Add(30030, 383, 19, 406, 34, texJason);
+
+
 
 	sprites->Add(10001, 246, 154, 260, 181, texMario);
 
@@ -99,9 +161,9 @@ void LoadResources()
 	sprites->Add(10013, 125, 154, 140, 181, texMario);
 
 	// RUNNING RIGHT 
-	sprites->Add(10021, 335, 154, 335 + 18, 154 +26, texMario);
-	sprites->Add(10022, 363, 154, 363 + 18, 154 + 26, texMario);
-	sprites->Add(10023, 393, 154, 393 + 18, 154 + 26, texMario);
+	sprites->Add(10021, 92, 154 + 26, 92 + 18, 154, texMario, -1);
+	sprites->Add(10022, 66, 154 + 26, 66 + 18, 154, texMario, -1);
+	sprites->Add(10023, 35, 154 + 26, 35 + 18, 154, texMario, -1);
 
 	// RUNNING LEFT
 	sprites->Add(10031, 92, 154, 92 + 18, 154 + 26, texMario);
@@ -189,6 +251,10 @@ void LoadResources()
 	ani = new CAnimation(100);
 	ani->Add(10062);
 	animations->Add(ID_ANI_MARIO_BRACE_LEFT, ani);
+
+	jason_small = new CJasonSmall(JASON_SMALL_START_X, JASON_SMALL_START_Y);
+	jason_small->LoadResource();
+	objects.push_back(jason_small);
 
 	mario = new CMario(MARIO_START_X, MARIO_START_Y);
 	objects.push_back(mario);
