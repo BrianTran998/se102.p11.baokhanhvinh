@@ -236,6 +236,9 @@ void CJasonSmall::SetState(int state)
 	case JASON_SMALL_STATE_SWIM_UP:
 		vy = -JASON_SMALL_SWIMMING_UP_SPEED_Y;
 		break;
+	case JASON_SMALL_STATE_SWIM_UP_RELEASE:
+		vy = 0;
+		break;
 	case JASON_SMALL_STATE_SWIM_DOWN:
 		vy = JASON_SMALL_SWIMMING_DOWN_SPEED_Y;
 		break;
@@ -296,6 +299,10 @@ void CJasonSmall::SetKey(int KeyCode, int KeyState)
 	if (KeyCode == DIK_DOWN)
 	{
 		if (KeyState == 1 && isCrawling) this->SetState(JASON_SMALL_STATE_CRALW_RELEASE);
+	}
+	if (KeyCode == DIK_UP)
+	{
+		if (KeyState == 1 && isSwimming) this->SetState(JASON_SMALL_STATE_SWIM_UP_RELEASE);
 	}
 	
 }

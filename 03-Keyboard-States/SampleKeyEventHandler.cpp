@@ -35,6 +35,9 @@ void CSampleKeyHandler::OnKeyUp(int KeyCode)
 		mario->SetState(MARIO_STATE_SIT_RELEASE);
 		jason_small->SetKey(DIK_DOWN, 1);
 		break;
+	case DIK_UP:
+		jason_small->SetKey(DIK_UP, 1);
+		break;
 	}
 }
 

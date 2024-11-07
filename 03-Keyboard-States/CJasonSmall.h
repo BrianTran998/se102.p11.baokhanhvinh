@@ -50,12 +50,13 @@
 #define JASON_SMALL_STATE_CLIMB_LEFT		317
 #define JASON_SMALL_STATE_CLIMB_RIGHT		318
 
-#define JASON_SMALL_STATE_DEAD			319
+#define JASON_SMALL_STATE_DEAD				319
 
 #define JASON_SMALL_STATE_SWIM_LEFT				320
 #define JASON_SMALL_STATE_SWIM_RIGHT			321
 #define JASON_SMALL_STATE_SWIM_UP				322
-#define JASON_SMALL_STATE_SWIM_DOWN				323
+#define JASON_SMALL_STATE_SWIM_UP_RELEASE		323
+#define JASON_SMALL_STATE_SWIM_DOWN				324
 
 //Define ANIMATION
 #define ID_ANI_JASON_SMALL_IDLE_LEFT			3000
@@ -93,7 +94,7 @@ public:
 	int isJumping = 0;
 	int isCrawling = 0;
 	int isClimbing = 0;
-	int isSwimming = 0;
+	int isSwimming = 1;
 	int isClimbable = 0;
 	int isDead = 0;
 public:
