@@ -101,7 +101,7 @@
 
 #define MARIO_UNTOUCHABLE_TIME 2500
 
-class CMario : public CGameObject
+class CJason : public CGameObject
 {
 	BOOLEAN isSitting;
 	float maxVx;
@@ -115,14 +115,12 @@ class CMario : public CGameObject
 	int coin; 
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
-	void OnCollisionWithCoin(LPCOLLISIONEVENT e);
-	void OnCollisionWithPortal(LPCOLLISIONEVENT e);
 
 	int GetAniIdBig();
 	int GetAniIdSmall();
 
 public:
-	CMario(float x, float y) : CGameObject(x, y)
+	CJason(float x, float y) : CGameObject(x, y)
 	{
 		isSitting = false;
 		maxVx = 0.0f;

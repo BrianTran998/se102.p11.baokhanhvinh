@@ -156,7 +156,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mario.cpp" />
+    <ClCompile Include="Jason.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="SampleKeyEventHandler.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -176,7 +176,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="KeyEventHandler.h" />
-    <ClInclude Include="Mario.h" />
+    <ClInclude Include="Jason.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="SampleKeyEventHandler.h" />
     <ClInclude Include="Scene.h" />

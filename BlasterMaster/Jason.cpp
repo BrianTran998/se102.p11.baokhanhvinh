@@ -1,14 +1,14 @@
 #include <algorithm>
 #include "debug.h"
 
-#include "Mario.h"
+#include "Jason.h"
 #include "Game.h"
 
 #include "Goomba.h"
 
 #include "Collision.h"
 
-void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
+void CJason::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	vy += ay * dt;
 	vx += ax * dt;
@@ -26,14 +26,14 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CCollision::GetInstance()->Process(this, dt, coObjects);
 }
 
-void CMario::OnNoCollision(DWORD dt)
+void CJason::OnNoCollision(DWORD dt)
 {
 	x += vx * dt;
 	y += vy * dt;
 	isOnPlatform = false;
 }
 
-void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
+void CJason::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	if (e->ny != 0 && e->obj->IsBlocking())
 	{
@@ -50,7 +50,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithGoomba(e);
 }
 
-void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
+void CJason::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 {
 	CGoomba *goomba = dynamic_cast<CGoomba *>(e->obj);
 
@@ -87,7 +87,7 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 //
 // Get animation ID for small Mario
 //
-int CMario::GetAniIdSmall()
+int CJason::GetAniIdSmall()
 {
 	int aniId = -1;
 	if (!isOnPlatform)
@@ -149,7 +149,7 @@ int CMario::GetAniIdSmall()
 //
 // Get animdation ID for big Mario
 //
-int CMario::GetAniIdBig()
+int CJason::GetAniIdBig()
 {
 	int aniId = -1;
 	if (!isOnPlatform)
@@ -208,7 +208,7 @@ int CMario::GetAniIdBig()
 	return aniId;
 }
 
-void CMario::Render()
+void CJason::Render()
 {
 	CAnimations *animations = CAnimations::GetInstance();
 	int aniId = -1;
@@ -227,7 +227,7 @@ void CMario::Render()
 	DebugOutTitle(L"Coins: %d", coin);
 }
 
-void CMario::SetState(int state)
+void CJason::SetState(int state)
 {
 	// DIE is the end state, cannot be changed!
 	if (this->state == MARIO_STATE_DIE)
@@ -315,7 +315,7 @@ void CMario::SetState(int state)
 	CGameObject::SetState(state);
 }
 
-void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom)
+void CJason::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
 	if (level == MARIO_LEVEL_BIG)
 	{
@@ -343,7 +343,7 @@ void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	}
 }
 
-void CMario::SetLevel(int l)
+void CJason::SetLevel(int l)
 {
 	// Adjust position to avoid falling off platform
 	if (this->level == MARIO_LEVEL_SMALL)

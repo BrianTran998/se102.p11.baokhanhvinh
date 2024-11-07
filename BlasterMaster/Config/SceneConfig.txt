@@ -11,7 +11,7 @@ height	240
 
 # id	file 
 [TEXTURES]
--100	textures\bbox.png
-0	textures\mario.png
-10	textures\enemies.png
-20	textures\misc.png
+-100	Textures\bbox.png
+0	Textures\JasonSohpia.png
+10	Textures\enemies.png
+20	Textures\misc.png
