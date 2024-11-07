@@ -57,6 +57,8 @@
 #define JASON_SMALL_STATE_SWIM_UP				322
 #define JASON_SMALL_STATE_SWIM_UP_RELEASE		323
 #define JASON_SMALL_STATE_SWIM_DOWN				324
+#define JASON_SMALL_STATE_SWIM_RELEASE			325
+#define JASON_SMALL_STATE_SWIM_ENTER			326
 
 //Define ANIMATION
 #define ID_ANI_JASON_SMALL_IDLE_LEFT			3000
@@ -94,7 +96,7 @@ public:
 	int isJumping = 0;
 	int isCrawling = 0;
 	int isClimbing = 0;
-	int isSwimming = 1;
+	int isSwimming = 0;
 	int isClimbable = 0;
 	int isDead = 0;
 public:

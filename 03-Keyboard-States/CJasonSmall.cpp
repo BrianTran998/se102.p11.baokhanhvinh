@@ -198,6 +198,7 @@ void CJasonSmall::SetState(int state)
 		break;
 	//JUMP
 	case JASON_SMALL_STATE_JUMP:
+		if (isJumping == 1) break;
 		isClimbing = 0;
 		vy = -JASON_SMALL_JUMP_SPEED_Y;
 		break;
@@ -241,6 +242,15 @@ void CJasonSmall::SetState(int state)
 		break;
 	case JASON_SMALL_STATE_SWIM_DOWN:
 		vy = JASON_SMALL_SWIMMING_DOWN_SPEED_Y;
+		break;
+	case JASON_SMALL_STATE_SWIM_RELEASE:
+		isSwimming = 0;
+		if (!isClimbing) SetState(JASON_SMALL_STATE_JUMP);
+		break;
+	case JASON_SMALL_STATE_SWIM_ENTER:
+		if (isSwimming) break;
+		isSwimming = 1;
+		vy = 0;
 		break;
 
 	//DEAD
@@ -325,6 +335,16 @@ void CJasonSmall::Update(DWORD dt)
 	else if (isClimbing || isSwimming) isJumping = 0;
 	else isJumping = 1;
 
+	int SWIM_DEMO = 0;
+	if (SWIM_DEMO)
+	{
+		if (y >= 100.0f)
+		{
+			SetState(JASON_SMALL_STATE_SWIM_ENTER);
+		}
+		else SetState(JASON_SMALL_STATE_SWIM_RELEASE);
+	}
+
 	DebugOutTitle(L"isJumping = %0.5f", float(isJumping));
 
 	// simple screen edge collision!!!
@@ -368,7 +388,7 @@ void CJasonSmall::Render()
 
 	if (isClimbing)
 	{
-		if (vy > 0) ani = ID_ANI_JASON_SMALL_CLIMB_DOWN;
+		if (vy > 0 || vx!=0) ani = ID_ANI_JASON_SMALL_CLIMB_DOWN;
 		else if (vy < 0) ani = ID_ANI_JASON_SMALL_CLIMB_UP;
 		else ani = ID_ANI_JASON_SMALL_CLIMB_IDLE;
 	}
