@@ -36,8 +36,6 @@ HOW TO INSTALL Microsoft.DXSDK.D3DX
 #include "Mario.h"
 #include "Brick.h"
 #include "Goomba.h"
-#include "Coin.h"
-#include "Platform.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -177,7 +175,8 @@ int Run()
 			Update(dt);
 			Render();
 
-			CGame::GetInstance()->SwitchScene();
+			//TODO: Remove comment for switch scene function
+			// CGame::GetInstance()->SwitchScene();
 		}
 		else
 			Sleep(tickPerFrame - dt);	
@@ -202,7 +201,7 @@ int WINAPI WinMain(
 
 
 	//IMPORTANT: this is the only place where a hardcoded file name is allowed ! 
-	game->Load(L"mario-sample.txt");  
+	game->Load(L"Config\\SceneConfig.txt");  
 
 	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH*2, SCREEN_HEIGHT*2, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
