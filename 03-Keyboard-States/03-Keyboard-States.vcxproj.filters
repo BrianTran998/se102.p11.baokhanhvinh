@@ -22,6 +22,9 @@
     <Filter Include="GameObject\Character\Player">
       <UniqueIdentifier>{41a0447b-1cb6-4c75-b16c-09347b6b2437}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Character\Enemies">
+      <UniqueIdentifier>{ef2d3382-8cfa-45ff-be23-c905cd613765}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -37,9 +40,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Textures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mario.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\02-Sprite\Sprite.cpp">
@@ -66,6 +66,12 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="CEnemy.cpp">
+      <Filter>GameObject\Character\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="CWalker.cpp">
+      <Filter>GameObject\Character\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -78,9 +84,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Textures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
@@ -115,6 +118,12 @@
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnemy.h">
+      <Filter>GameObject\Character\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="CWalker.h">
+      <Filter>GameObject\Character\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

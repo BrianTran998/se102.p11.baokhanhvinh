@@ -2,160 +2,160 @@
 
 void CJasonSmall::LoadResource()
 {
-	textures->Add(ID_TEX_JASON_SMALL, TEXTURE_PATH_JASON_SMALL);
+	textures->Add(ID_TEX_PLAYER, TEXTURE_PATH_PLAYER);
 
-	LPTEXTURE textJasonSmall = textures->Get(ID_TEX_JASON_SMALL);
+	LPTEXTURE textJasonSmall = textures->Get(ID_TEX_PLAYER);
 
 	LPANIMATION ani;
 
 	//Jason small idle left
-	sprites->Add(30001, 3, 30, 10, 45, textJasonSmall);
+	sprites->Add(3000001, 3, 30, 10, 45, textJasonSmall);
 
 	ani = new CAnimation(100);
-	ani->Add(30001);
+	ani->Add(3000001);
 	animations->Add(ID_ANI_JASON_SMALL_IDLE_LEFT, ani);
 
 	//Jason small idle right
-	sprites->Add(30002, 3, 45, 10, 30, textJasonSmall, -1);
+	sprites->Add(3000002, 10, 30, 3, 45, textJasonSmall, -1);
 
 	ani = new CAnimation(100);
-	ani->Add(30002);
+	ani->Add(3000002);
 	animations->Add(ID_ANI_JASON_SMALL_IDLE_RIGHT, ani);
 
 	//Jason small walk left
-	sprites->Add(30003, 12, 30, 19, 45, textJasonSmall);
-	sprites->Add(30004, 21, 30, 28, 45, textJasonSmall);
-	sprites->Add(30005, 30, 30, 37, 45, textJasonSmall);
+	sprites->Add(3000003, 12, 30, 19, 45, textJasonSmall);
+	sprites->Add(3000004, 21, 30, 28, 45, textJasonSmall);
+	sprites->Add(3000005, 30, 30, 37, 45, textJasonSmall);
 
 	ani = new CAnimation(100);
-	ani->Add(30003);
-	ani->Add(30004);
-	ani->Add(30005);
-	ani->Add(30004);
+	ani->Add(3000003);
+	ani->Add(3000004);
+	ani->Add(3000005);
+	ani->Add(3000004);
 	animations->Add(ID_ANI_JASON_SMALL_WALKING_LEFT, ani);
 
 	//Jason small walk right
-	sprites->Add(30006, 12, 45, 19, 30, textJasonSmall, -1);
-	sprites->Add(30007, 21, 45, 28, 30, textJasonSmall, -1);
-	sprites->Add(30008, 30, 45, 37, 30, textJasonSmall, -1);
+	sprites->Add(3000006, 19, 30, 12, 45, textJasonSmall, -1);
+	sprites->Add(3000007, 28, 30, 21, 45, textJasonSmall, -1);
+	sprites->Add(3000008, 37, 30, 30, 45, textJasonSmall, -1);
 
 	ani = new CAnimation(100);
-	ani->Add(30006);
-	ani->Add(30007);
-	ani->Add(30008);
-	ani->Add(30007);
+	ani->Add(3000006);
+	ani->Add(3000007);
+	ani->Add(3000008);
+	ani->Add(3000007);
 	animations->Add(ID_ANI_JASON_SMALL_WALKING_RIGHT, ani);
 
 	//Jason small crawl left
-	sprites->Add(30009, 3, 47, 18, 54, textJasonSmall);
-	sprites->Add(30010, 20, 47, 35, 54, textJasonSmall);
+	sprites->Add(3000009, 3, 47, 18, 54, textJasonSmall);
+	sprites->Add(3000010, 20, 47, 35, 54, textJasonSmall);
 
 	ani = new CAnimation(120);
-	ani->Add(30009);
+	ani->Add(3000009);
 	animations->Add(ID_ANI_JASON_SMALL_CRAWL_IDLE_LEFT, ani);
 
 	ani = new CAnimation(120);
-	ani->Add(30009);
-	ani->Add(30010);
+	ani->Add(3000009);
+	ani->Add(3000010);
 	animations->Add(ID_ANI_JASON_SMALL_CRAWLING_LEFT, ani);
 
 	//Jason small crawl right
-	sprites->Add(30011, 3, 54, 18, 47, textJasonSmall, -1);
-	sprites->Add(30012, 20, 54, 35, 47, textJasonSmall, -1);
+	sprites->Add(3000011, 18, 47, 3, 54, textJasonSmall, -1);
+	sprites->Add(3000012, 35, 47, 20, 54, textJasonSmall, -1);
 
 	ani = new CAnimation(120);
-	ani->Add(30011);
+	ani->Add(3000011);
 	animations->Add(ID_ANI_JASON_SMALL_CRAWL_IDLE_RIGHT, ani);
 
 	ani = new CAnimation(120);
-	ani->Add(30011);
-	ani->Add(30012);
+	ani->Add(3000011);
+	ani->Add(3000012);
 	animations->Add(ID_ANI_JASON_SMALL_CRAWLING_RIGHT, ani);
 
 	//Jason small jump left
 	ani = new CAnimation(100);
-	ani->Add(30003);
+	ani->Add(3000003);
 	animations->Add(ID_ANI_JASON_SMALL_JUMP_LEFT, ani);
 
 	//Jason small jump right
 	ani = new CAnimation(100);
-	ani->Add(30006);
+	ani->Add(3000006);
 	animations->Add(ID_ANI_JASON_SMALL_JUMP_RIGHT, ani);
 
 	//Jason small climb ladder
-	sprites->Add(30013, 40, 47, 49, 62, textJasonSmall);
-	sprites->Add(30014, 57, 47, 66, 62, textJasonSmall);
+	sprites->Add(3000013, 40, 47, 49, 62, textJasonSmall);
+	sprites->Add(3000014, 57, 47, 66, 62, textJasonSmall);
 
 	ani = new CAnimation(100);
-	ani->Add(30013);
+	ani->Add(3000013);
 	animations->Add(ID_ANI_JASON_SMALL_CLIMB_IDLE, ani);
 
 	ani = new CAnimation(100);
-	ani->Add(30013);
-	ani->Add(30014);
+	ani->Add(3000013);
+	ani->Add(3000014);
 	animations->Add(ID_ANI_JASON_SMALL_CLIMB_UP, ani);
 
 	ani = new CAnimation(100);
-	ani->Add(30014);
-	ani->Add(30013);
+	ani->Add(3000014);
+	ani->Add(3000013);
 	animations->Add(ID_ANI_JASON_SMALL_CLIMB_DOWN, ani);
 
 	//Jason small swim left
-	sprites->Add(30015, 39, 36, 53, 45, textJasonSmall);
-	sprites->Add(30016, 56, 36, 70, 45, textJasonSmall);
+	sprites->Add(3000015, 39, 36, 53, 45, textJasonSmall);
+	sprites->Add(3000016, 56, 36, 70, 45, textJasonSmall);
 
 	ani = new CAnimation(100);
-	ani->Add(30015);
-	ani->Add(30016);
+	ani->Add(3000015);
+	ani->Add(3000016);
 	animations->Add(ID_ANI_JASON_SMALL_SWIM_LEFT, ani);
 
 	//Jason small swim right
-	sprites->Add(30017, 39, 45, 53, 36, textJasonSmall, -1);
-	sprites->Add(30018, 56, 45, 70, 36, textJasonSmall, -1);
+	sprites->Add(3000017, 53, 36, 39, 45, textJasonSmall, -1);
+	sprites->Add(3000018, 70, 36, 56, 45, textJasonSmall, -1);
 
 	ani = new CAnimation(100);
-	ani->Add(30017);
-	ani->Add(30018);
+	ani->Add(3000017);
+	ani->Add(3000018);
 	animations->Add(ID_ANI_JASON_SMALL_SWIM_RIGHT, ani);
 
 	//Jason small dead
-	sprites->Add(30019, 3, 64, 18, 79, textJasonSmall);
-	sprites->Add(30020, 20, 64, 35, 79, textJasonSmall);
-	sprites->Add(30021, 37, 64, 52, 79, textJasonSmall);
-	sprites->Add(30022, 54, 64, 69, 79, textJasonSmall);
-	sprites->Add(30023, 3, 81, 18, 96, textJasonSmall);
-	sprites->Add(30024, 20, 89, 35, 96, textJasonSmall);
+	sprites->Add(3000019, 3, 64, 18, 79, textJasonSmall);
+	sprites->Add(3000020, 20, 64, 35, 79, textJasonSmall);
+	sprites->Add(3000021, 37, 64, 52, 79, textJasonSmall);
+	sprites->Add(3000022, 54, 64, 69, 79, textJasonSmall);
+	sprites->Add(3000023, 3, 81, 18, 96, textJasonSmall);
+	sprites->Add(3000024, 20, 89, 35, 96, textJasonSmall);
 
 	ani = new CAnimation(100);
-	ani->Add(30019);
-	ani->Add(30020);
-	ani->Add(30021);
-	ani->Add(30022);
-	ani->Add(30023);
-	ani->Add(30024);
+	ani->Add(3000019);
+	ani->Add(3000020);
+	ani->Add(3000021);
+	ani->Add(3000022);
+	ani->Add(3000023);
+	ani->Add(3000024);
 	animations->Add(ID_ANI_JASON_SMALL_DEAD, ani);
 
 	//Jason big turn down
-	sprites->Add(30017, 208, 3, 231, 34, textJasonSmall);
-	sprites->Add(30018, 233, 3, 256, 34, textJasonSmall);
-	sprites->Add(30019, 258, 3, 281, 34, textJasonSmall);
+	sprites->Add(3000025, 208, 3, 231, 34, textJasonSmall);
+	sprites->Add(3000026, 233, 3, 256, 34, textJasonSmall);
+	sprites->Add(3000027, 258, 3, 281, 34, textJasonSmall);
 
 	//Jason big turn up
-	sprites->Add(30020, 208, 36, 231, 67, textJasonSmall);
-	sprites->Add(30021, 233, 36, 256, 67, textJasonSmall);
-	sprites->Add(30022, 258, 36, 281, 67, textJasonSmall);
+	sprites->Add(3000028, 208, 36, 231, 67, textJasonSmall);
+	sprites->Add(3000029, 233, 36, 256, 67, textJasonSmall);
+	sprites->Add(3000030, 258, 36, 281, 67, textJasonSmall);
 
 	//Jason big turn left
-	sprites->Add(30023, 208, 69, 231, 100, textJasonSmall);
-	sprites->Add(30024, 233, 69, 256, 100, textJasonSmall);
-	sprites->Add(30025, 258, 69, 281, 100, textJasonSmall);
+	sprites->Add(3000031, 208, 69, 231, 100, textJasonSmall);
+	sprites->Add(3000032, 233, 69, 256, 100, textJasonSmall);
+	sprites->Add(3000033, 258, 69, 281, 100, textJasonSmall);
 
 	//Jason big dead
-	sprites->Add(30026, 283, 3, 306, 34, textJasonSmall);
-	sprites->Add(30027, 308, 3, 331, 34, textJasonSmall);
-	sprites->Add(30028, 333, 3, 356, 34, textJasonSmall);
-	sprites->Add(30029, 358, 3, 381, 34, textJasonSmall);
-	sprites->Add(30030, 383, 19, 406, 34, textJasonSmall);
+	sprites->Add(3000034, 283, 3, 306, 34, textJasonSmall);
+	sprites->Add(3000035, 308, 3, 331, 34, textJasonSmall);
+	sprites->Add(3000036, 333, 3, 356, 34, textJasonSmall);
+	sprites->Add(3000037, 358, 3, 381, 34, textJasonSmall);
+	sprites->Add(3000038, 383, 19, 406, 34, textJasonSmall);
 }
 
 void CJasonSmall::SetState(int state)
@@ -370,8 +370,7 @@ void CJasonSmall::Render()
 		else if (isCrawling) ani = ID_ANI_JASON_SMALL_CRAWL_IDLE_LEFT;
 		else ani = ID_ANI_JASON_SMALL_IDLE_LEFT;
 	}
-
-	if (nx >= 0)
+	else if (nx >= 0)
 	{
 		if (vx != 0)
 		{

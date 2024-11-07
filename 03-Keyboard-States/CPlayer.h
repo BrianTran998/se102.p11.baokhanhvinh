@@ -7,6 +7,11 @@
 #include "Sprite.h"
 #include "Sprites.h"
 
+#define ID_TEX_PLAYER 30
+#define TEXTURES_DIR L"textures"
+
+#define TEXTURE_PATH_PLAYER TEXTURES_DIR "\\Jason.png" 
+
 class CPlayer: public CGameObject
 {
 public:
