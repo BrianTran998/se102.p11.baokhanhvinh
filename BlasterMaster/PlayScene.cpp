@@ -40,6 +40,7 @@ void CPlayScene::_ParseSection_SPRITES(string line)
 	int r = atoi(tokens[3].c_str());
 	int b = atoi(tokens[4].c_str());
 	int texID = atoi(tokens[5].c_str());
+	int isFlip = (tokens.size() > 6) ? atoi(tokens[6].c_str()) : 0;
 
 	LPTEXTURE tex = CTextures::GetInstance()->Get(texID);
 	if (tex == NULL)
@@ -48,7 +49,7 @@ void CPlayScene::_ParseSection_SPRITES(string line)
 		return;
 	}
 
-	CSprites::GetInstance()->Add(ID, l, t, r, b, tex);
+	CSprites::GetInstance()->Add(ID, l, t, r, b, tex, isFlip);
 }
 
 void CPlayScene::_ParseSection_ASSETS(string line)
@@ -104,7 +105,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	switch (object_type)
 	{
-	case OBJECT_TYPE_MARIO:
+	case OBJECT_TYPE_JASON:
 		if (player != NULL)
 		{
 			DebugOut(L"[ERROR] MARIO object was created before!\n");
@@ -115,11 +116,14 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 		DebugOut(L"[INFO] Player object has been created!\n");
 		break;
-	case OBJECT_TYPE_GOOMBA:
-		obj = new CGoomba(x, y);
+	case OBJECT_TYPE_AUTOMOVER:
+		obj = new CAutoMover(x, y);
 		break;
 	case OBJECT_TYPE_BRICK:
 		obj = new CBrick(x, y);
+		break;
+	case OBJECT_TYPE_BACKGROUND:
+		obj = new CBrick(x, y, 1);
 		break;
 
 	default:

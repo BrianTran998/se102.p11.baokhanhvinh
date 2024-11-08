@@ -14,19 +14,19 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_DOWN:
-		mario->SetState(MARIO_STATE_SIT);
+		mario->SetState(JASON_STATE_SIT);
 		break;
 	case DIK_S:
-		mario->SetState(MARIO_STATE_JUMP);
+		mario->SetState(JASON_STATE_JUMP);
 		break;
 	case DIK_1:
-		mario->SetLevel(MARIO_LEVEL_SMALL);
+		mario->SetLevel(JASON_LEVEL_SMALL);
 		break;
 	case DIK_2:
-		mario->SetLevel(MARIO_LEVEL_BIG);
+		mario->SetLevel(JASON_LEVEL_BIG);
 		break;
 	case DIK_0:
-		mario->SetState(MARIO_STATE_DIE);
+		mario->SetState(JASON_STATE_DIE);
 		break;
 	case DIK_R: // reset
 		//Reload();
@@ -42,10 +42,10 @@ void CSampleKeyHandler::OnKeyUp(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_S:
-		mario->SetState(MARIO_STATE_RELEASE_JUMP);
+		mario->SetState(JASON_STATE_RELEASE_JUMP);
 		break;
 	case DIK_DOWN:
-		mario->SetState(MARIO_STATE_SIT_RELEASE);
+		mario->SetState(JASON_STATE_SIT_RELEASE);
 		break;
 	}
 }
@@ -58,17 +58,17 @@ void CSampleKeyHandler::KeyState(BYTE *states)
 	if (game->IsKeyDown(DIK_RIGHT))
 	{
 		if (game->IsKeyDown(DIK_A))
-			mario->SetState(MARIO_STATE_RUNNING_RIGHT);
+			mario->SetState(JASON_STATE_RUNNING_RIGHT);
 		else
-			mario->SetState(MARIO_STATE_WALKING_RIGHT);
+			mario->SetState(JASON_STATE_WALKING_RIGHT);
 	}
 	else if (game->IsKeyDown(DIK_LEFT))
 	{
 		if (game->IsKeyDown(DIK_A))
-			mario->SetState(MARIO_STATE_RUNNING_LEFT);
+			mario->SetState(JASON_STATE_RUNNING_LEFT);
 		else
-			mario->SetState(MARIO_STATE_WALKING_LEFT);
+			mario->SetState(JASON_STATE_WALKING_LEFT);
 	}
 	else
-		mario->SetState(MARIO_STATE_IDLE);
+		mario->SetState(JASON_STATE_IDLE);
 }

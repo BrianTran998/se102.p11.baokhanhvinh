@@ -14,15 +14,14 @@ using namespace std;
 */
 class CSprites
 {
-	static CSprites* __instance;
+	static CSprites *__instance;
 
 	unordered_map<int, LPSPRITE> sprites;
 
 public:
-	void Add(int id, int left, int top, int right, int bottom, LPTEXTURE tex);
+	void Add(int id, int left, int top, int right, int bottom, LPTEXTURE tex, int isFlip);
 	LPSPRITE Get(int id);
 	void Clear();
 
-	static CSprites* GetInstance();
+	static CSprites *GetInstance();
 };
-

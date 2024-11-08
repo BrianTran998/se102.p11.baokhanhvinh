@@ -35,7 +35,7 @@ HOW TO INSTALL Microsoft.DXSDK.D3DX
 
 #include "Jason.h"
 #include "Brick.h"
-#include "Goomba.h"
+#include "AutoMover.h"
 
 #include "SampleKeyEventHandler.h"
 

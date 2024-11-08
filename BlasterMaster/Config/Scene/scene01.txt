@@ -2,20 +2,15 @@
 [ASSETS]
 Config\GameObject\Jason.txt
 Config\GameObject\brick.txt
-Config\GameObject\goomba.txt
+Config\GameObject\AutoMover.txt
+Config\GameObject\Background.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type
-# type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas
+# type: 0 = Jason , 1 = Brick, 2 = AutoMover, 3 = Background
 # See OBJECT_TYPE constants in AssetIDs.h
 
-# MARIO
-0	20	10
-
 # BRICKS
-1	0	148
-1	0	164
-
 1	0	180
 1	16	180
 1	32	180
@@ -40,8 +35,12 @@ Config\GameObject\goomba.txt
 1	336	180
 1	352	180
 
-1	352	148
-1	352	164
+# Background
+3	150	105
 
-#Goomba
-2	300	10
+# Jason
+0	20	10
+
+# AutoMover
+2	300	150
+2	200	100

@@ -15,3 +15,4 @@ height	240
 0	Textures\JasonSohpia.png
 10	Textures\enemies.png
 20	Textures\misc.png
+30	Textures\level2-side.png
