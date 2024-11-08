@@ -25,6 +25,9 @@
     <Filter Include="GameObject\Character\Enemies">
       <UniqueIdentifier>{ef2d3382-8cfa-45ff-be23-c905cd613765}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Tileset">
+      <UniqueIdentifier>{94706faa-b98e-4643-9dd1-b1364c9f7d1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -54,9 +57,6 @@
     <ClCompile Include="SampleKeyEventHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CPlayer.cpp">
       <Filter>GameObject\Character\Player</Filter>
     </ClCompile>
@@ -71,6 +71,12 @@
     </ClCompile>
     <ClCompile Include="CWalker.cpp">
       <Filter>GameObject\Character\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>GameObject\Tileset</Filter>
+    </ClCompile>
+    <ClCompile Include="CLadder.cpp">
+      <Filter>GameObject\Tileset</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,9 +113,6 @@
     <ClInclude Include="SampleKeyEventHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CPlayer.h">
       <Filter>GameObject\Character\Player</Filter>
     </ClInclude>
@@ -124,6 +127,12 @@
     </ClInclude>
     <ClInclude Include="CWalker.h">
       <Filter>GameObject\Character\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>GameObject\Tileset</Filter>
+    </ClInclude>
+    <ClInclude Include="CLadder.h">
+      <Filter>GameObject\Tileset</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

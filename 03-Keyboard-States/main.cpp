@@ -24,6 +24,7 @@
 #include "CJasonSmall.h"
 #include "CWalker.h"
 #include "Brick.h"
+#include "CLadder.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -51,8 +52,11 @@
 
 #define GROUND_Y 160.0f
 #define BRICK_X 0.0f
+#define LADDER_X 200.0f
+#define LADDER_HEIGHT 15.0f
 #define BRICK_Y GROUND_Y + 20.0f
 #define NUM_BRICKS 50
+#define NUM_LADDER 10
 
 CJasonSmall* jason_small = NULL;
 CWalker* walker = NULL;
@@ -88,14 +92,6 @@ void LoadResources()
 
 	LPANIMATION ani;
 
-	jason_small = new CJasonSmall(JASON_SMALL_START_X, JASON_SMALL_START_Y);
-	jason_small->LoadResource();
-	objects.push_back(jason_small);
-
-	walker = new CWalker(WALKER_START_X, WALKER_SMALL_START_Y);
-	walker->LoadResource();
-	objects.push_back(walker);
-
 	// Brick objects 
 	LPTEXTURE texMisc = textures->Get(ID_TEX_MISC);
 	sprites->Add(ID_SPRITE_BRICK, 372, 153, 372+15, 153+15, texMisc);
@@ -104,11 +100,27 @@ void LoadResources()
 	ani->Add(ID_SPRITE_BRICK);
 	animations->Add(ID_ANI_BRICK,ani);
 
+	CLadder::LoadResource();
+
+	for (int i = 0; i < NUM_LADDER; i++)
+	{
+		CLadder* l = new CLadder(LADDER_X, GROUND_Y - LADDER_HEIGHT * i);
+		objects.push_back(l);
+	}
+
 	for (int i=0;i<NUM_BRICKS;i++) 
 	{
 		CBrick* b = new CBrick(BRICK_X + i * BRICK_WIDTH, BRICK_Y);
 		objects.push_back(b);
 	}
+
+	jason_small = new CJasonSmall(JASON_SMALL_START_X, JASON_SMALL_START_Y);
+	jason_small->LoadResource();
+	objects.push_back(jason_small);
+
+	walker = new CWalker(WALKER_START_X, WALKER_SMALL_START_Y);
+	walker->LoadResource();
+	objects.push_back(walker);
 }
 
 /*

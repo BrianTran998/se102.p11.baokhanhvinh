@@ -344,8 +344,14 @@ void CJasonSmall::Update(DWORD dt)
 		}
 		else SetState(JASON_SMALL_STATE_SWIM_RELEASE);
 	}
+	int CLIMB_DEMO = 1;
+	if (CLIMB_DEMO)
+	{
+		if (x >= 193.0f && x <= 207 && y >= 10) isClimbable = 1;
+		else isClimbable = 0;
+	}
 
-	DebugOutTitle(L"isJumping = %0.5f", float(isJumping));
+	DebugOutTitle(L"isClimbable = %0.5f", float(isClimbable));
 
 	// simple screen edge collision!!!
 	if (vx > 0 && x > 290) x = 290;
