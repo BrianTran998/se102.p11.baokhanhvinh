@@ -62,4 +62,9 @@ void CSampleKeyHandler::KeyState(BYTE *states)
 		jason_small->SetKey(DIK_UP, 0);
 	}
 
+	if (game->IsKeyDown(DIK_K))
+	{
+		jason_small->SetKey(DIK_K, 0);
+	}
+
 }

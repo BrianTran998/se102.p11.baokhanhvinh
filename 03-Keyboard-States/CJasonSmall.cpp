@@ -135,6 +135,10 @@ void CJasonSmall::LoadResource()
 	ani->Add(3000024);
 	animations->Add(ID_ANI_JASON_SMALL_DEAD, ani);
 
+	ani = new CAnimation(100);
+	ani->Add(3000024);
+	animations->Add(ID_ANI_JASON_SMALL_FINISH_DEAD, ani);
+
 	//Jason big turn down
 	sprites->Add(3000025, 208, 3, 231, 34, textJasonSmall);
 	sprites->Add(3000026, 233, 3, 256, 34, textJasonSmall);
@@ -160,7 +164,7 @@ void CJasonSmall::LoadResource()
 
 void CJasonSmall::SetState(int state)
 {
-	if (this->state == ID_ANI_JASON_SMALL_DEAD)
+	if (isDead == 1)
 	{
 		return;
 	}
@@ -257,6 +261,7 @@ void CJasonSmall::SetState(int state)
 	case JASON_SMALL_STATE_DEAD:
 		vx = 0;
 		vy = 0;
+		isDead = 1;
 		this->state = JASON_SMALL_STATE_DEAD;
 		break;
 	}
@@ -314,11 +319,20 @@ void CJasonSmall::SetKey(int KeyCode, int KeyState)
 	{
 		if (KeyState == 1 && isSwimming) this->SetState(JASON_SMALL_STATE_SWIM_UP_RELEASE);
 	}
+	if (KeyCode == DIK_K)
+	{
+		this->SetState(JASON_SMALL_STATE_DEAD);
+	}
 	
 }
 
 void CJasonSmall::Update(DWORD dt)
 {
+	if (this->state == JASON_SMALL_STATE_DEAD)
+	{
+		countTimeDead += int(dt);
+	}
+
 	x += vx * dt;
 	y += vy * dt;
 
@@ -401,6 +415,16 @@ void CJasonSmall::Render()
 	if (this->state == JASON_SMALL_STATE_DEAD)
 	{
 		ani = ID_ANI_JASON_SMALL_DEAD;
+		if (countTimeDead >= 400)
+		{
+			this->state = JASON_SMALL_STATE_FINISH_DEAD;
+			countTimeDead = 400;
+		}
+	}
+
+	if (this->state == JASON_SMALL_STATE_FINISH_DEAD)
+	{
+		ani = ID_ANI_JASON_SMALL_FINISH_DEAD;
 	}
 
 	animations->Get(ani)->Render(x, y);

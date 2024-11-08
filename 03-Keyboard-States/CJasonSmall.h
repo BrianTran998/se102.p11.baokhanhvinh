@@ -41,8 +41,6 @@
 #define JASON_SMALL_STATE_CLIMB_LEFT		317
 #define JASON_SMALL_STATE_CLIMB_RIGHT		318
 
-#define JASON_SMALL_STATE_DEAD				319
-
 #define JASON_SMALL_STATE_SWIM_LEFT				320
 #define JASON_SMALL_STATE_SWIM_RIGHT			321
 #define JASON_SMALL_STATE_SWIM_UP				322
@@ -50,6 +48,9 @@
 #define JASON_SMALL_STATE_SWIM_DOWN				324
 #define JASON_SMALL_STATE_SWIM_RELEASE			325
 #define JASON_SMALL_STATE_SWIM_ENTER			326
+
+#define JASON_SMALL_STATE_DEAD				327
+#define JASON_SMALL_STATE_FINISH_DEAD		328
 
 //Define ANIMATION
 #define ID_ANI_JASON_SMALL_IDLE_LEFT			30000
@@ -74,7 +75,8 @@
 #define ID_ANI_JASON_SMALL_SWIM_LEFT	30017
 #define ID_ANI_JASON_SMALL_SWIM_RIGHT	30018
 
-#define ID_ANI_JASON_SMALL_DEAD			30019
+#define ID_ANI_JASON_SMALL_DEAD					30019
+#define ID_ANI_JASON_SMALL_FINISH_DEAD			30020
 
 
 extern CTextures* textures;
@@ -90,6 +92,7 @@ protected:
 	int isSwimming = 0;
 	int isClimbable = 0;
 	int isDead = 0;
+	int countTimeDead = 0;
 public:
 	CJasonSmall() : CPlayer() {};
 	CJasonSmall(float x, float y) : CPlayer(x, y) {};
