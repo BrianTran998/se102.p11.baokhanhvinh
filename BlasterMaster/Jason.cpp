@@ -23,6 +23,19 @@ void CJason::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		untouchable = 0;
 	}
 
+	int BackBufferWidth = CGame::GetInstance()->GetBackBufferWidth();
+	if (x <= JASON_BIG_BBOX_WIDTH || x >= BackBufferWidth - JASON_BIG_BBOX_WIDTH)
+	{
+		if (x <= JASON_BIG_BBOX_WIDTH)
+		{
+			x = JASON_BIG_BBOX_WIDTH;
+		}
+		else if (x >= BackBufferWidth - JASON_BIG_BBOX_WIDTH)
+		{
+			x = (float)(BackBufferWidth - JASON_BIG_BBOX_WIDTH);
+		}
+	}
+
 	CCollision::GetInstance()->Process(this, dt, coObjects);
 }
 
@@ -112,18 +125,18 @@ int CJason::GetAniIdBig()
 void CJason::Render()
 {
 	CAnimations *animations = CAnimations::GetInstance();
-	int aniId = -1;
+	// int aniId = -1;
 
-	if (state == JASON_STATE_DIE)
-		aniId = ID_ANI_JASON_DIE;
-	else if (level == JASON_LEVEL_BIG)
-		aniId = GetAniIdBig();
+	// if (state == JASON_STATE_DIE)
+	// 	aniId = ID_ANI_JASON_DIE;
+	// else if (level == JASON_LEVEL_BIG)
+	// 	aniId = GetAniIdBig();
 
-	animations->Get(aniId)->Render(x, y);
+	animations->Get(GetAniIdBig())->Render(x, y);
 
 	// RenderBoundingBox();
 
-	DebugOutTitle(L"Coins: %d", coin);
+	// DebugOutTitle(L"Coins: %d", coin);
 }
 
 void CJason::SetState(int state)

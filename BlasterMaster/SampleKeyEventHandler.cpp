@@ -19,18 +19,18 @@ void CSampleKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_S:
 		mario->SetState(JASON_STATE_JUMP);
 		break;
-	case DIK_1:
-		mario->SetLevel(JASON_LEVEL_SMALL);
-		break;
+	// case DIK_1:
+	// 	mario->SetLevel(JASON_LEVEL_SMALL);
+	// 	break;
 	case DIK_2:
 		mario->SetLevel(JASON_LEVEL_BIG);
 		break;
-	case DIK_0:
-		mario->SetState(JASON_STATE_DIE);
-		break;
-	case DIK_R: // reset
-		//Reload();
-		break;
+	// case DIK_0:
+	// 	mario->SetState(JASON_STATE_DIE);
+	// 	break;
+	// case DIK_R: // reset
+	// 	//Reload();
+	// 	break;
 	}
 }
 
