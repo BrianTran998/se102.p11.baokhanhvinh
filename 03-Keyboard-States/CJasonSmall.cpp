@@ -361,7 +361,7 @@ void CJasonSmall::Update(DWORD dt)
 	int CLIMB_DEMO = 1;
 	if (CLIMB_DEMO)
 	{
-		if (x >= 193.0f && x <= 207 && y >= 10) isClimbable = 1;
+		if (x >= 193.0f && x <= 207 && y <= 310) isClimbable = 1;
 		else isClimbable = 0;
 	}
 

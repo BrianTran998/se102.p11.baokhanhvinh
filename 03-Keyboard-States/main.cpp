@@ -106,7 +106,7 @@ void LoadResources()
 
 	for (int i = 0; i < NUM_LADDER; i++)
 	{
-		CLadder* l = new CLadder(LADDER_X, GROUND_Y - LADDER_HEIGHT * i);
+		CLadder* l = new CLadder(LADDER_X, GROUND_Y + LADDER_HEIGHT * i);
 		objects.push_back(l);
 	}
 
