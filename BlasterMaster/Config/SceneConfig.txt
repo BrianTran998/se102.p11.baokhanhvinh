@@ -1,0 +1,18 @@
+[SETTINGS]
+start	1
+width	320
+height	240
+
+#id	type	file
+# type: 0: intro, 1: play scene 
+[SCENES]
+0	intro.txt
+1	Config\Scene\scene01.txt
+
+# id	file 
+[TEXTURES]
+-100	Textures\bbox.png
+0	Textures\JasonSohpia.png
+10	Textures\enemies.png
+20	Textures\misc.png
+30	Textures\level2-side.png
