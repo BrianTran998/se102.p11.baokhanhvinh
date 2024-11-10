@@ -9,9 +9,6 @@
 
 #include "debug.h"
 
-#define WALKER_SMALL_START_X	150.0f
-#define WALKER_SMALL_START_Y	10.0f
-
 #define WALKER_WALKING_SPEED		0.05f
 #define WALKER_JUMP_SPEED_Y			0.3f
 #define WALKER_GRAVITY				0.002f
@@ -33,6 +30,7 @@
 extern CTextures* textures;
 extern CSprites* sprites;
 extern CAnimations* animations;
+extern CCamera* camera;
 
 class CWalker: public CEnemy
 {

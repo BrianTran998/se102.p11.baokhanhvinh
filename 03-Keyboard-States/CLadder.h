@@ -7,6 +7,7 @@
 #include "Animations.h"
 #include "Sprite.h"
 #include "Sprites.h"
+#include "CCamera.h"
 
 #include "debug.h"
 
@@ -21,6 +22,7 @@
 extern CTextures* textures;
 extern CSprites* sprites;
 extern CAnimations* animations;
+extern CCamera* camera;
 
 class CLadder: public CGameObject
 {

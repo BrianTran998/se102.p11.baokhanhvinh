@@ -53,7 +53,7 @@ void CWalker::SetState(int state)
 		vx = WALKER_WALKING_SPEED;
 		break;
 	case WALKER_STATE_JUMP:
-		vy = -WALKER_JUMP_SPEED_Y;
+		vy = WALKER_JUMP_SPEED_Y;
 		break;
 	}
 }
@@ -63,7 +63,7 @@ void CWalker::Update(DWORD dt)
 	x += vx * dt;
 	y += vy * dt;
 
-	vy += WALKER_GRAVITY * dt;
+	vy -= WALKER_GRAVITY * dt;
 
 	if (vx == 0) SetState(WALKER_STATE_WALKING_LEFT);
 
@@ -78,9 +78,9 @@ void CWalker::Update(DWORD dt)
 		x = 0;
 		SetState(WALKER_STATE_WALKING_RIGHT);
 	}
-
-	if (y >= 160.f)
+	if (y <= 160.f)
 	{
+		vy = 0;
 		y = 160.0f;
 	}
 }
@@ -98,8 +98,15 @@ void CWalker::Render()
 		if (vx != 0) ani = ID_ANI_WALKER_WALKING_RIGHT;
 		else ani = ID_ANI_WALKER_IDLE_RIGHT;
 	}
-
-	animations->Get(ani)->Render(x, y);
+	DebugOutTitle(L"y = %0.5f", float(y));
+	int drawx = camera->TransitionX(x);
+	int drawy = camera->TransitionY(y);
+	if (((drawx < -30) || (drawx > 320)) &&
+		((drawy < -50) || (drawy > 240)))
+	{
+		return;
+	}
+	else animations->Get(ani)->Render(drawx, drawy);
 }
 
 

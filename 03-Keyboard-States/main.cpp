@@ -25,6 +25,7 @@
 #include "CWalker.h"
 #include "Brick.h"
 #include "CLadder.h"
+#include "CCamera.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -45,21 +46,22 @@
 #define TEXTURE_PATH_MISC TEXTURES_DIR "\\misc.png"
 
 #define JASON_SMALL_START_X 100.0f
-#define JASON_SMALL_START_Y 10.0f
+#define JASON_SMALL_START_Y 300.0f
 
 #define WALKER_START_X 150.0f
-#define WALKER_START_Y 10.0f
+#define WALKER_START_Y 500.0f
 
 #define GROUND_Y 160.0f
 #define BRICK_X 0.0f
 #define LADDER_X 200.0f
 #define LADDER_HEIGHT 15.0f
-#define BRICK_Y GROUND_Y + 20.0f
+#define BRICK_Y GROUND_Y - 20.0f
 #define NUM_BRICKS 50
 #define NUM_LADDER 10
 
 CJasonSmall* jason_small = NULL;
 CWalker* walker = NULL;
+CCamera* camera = new CCamera(300, 300);
 
 CSampleKeyHandler* keyHandler;
 
@@ -118,7 +120,7 @@ void LoadResources()
 	jason_small->LoadResource();
 	objects.push_back(jason_small);
 
-	walker = new CWalker(WALKER_START_X, WALKER_SMALL_START_Y);
+	walker = new CWalker(WALKER_START_X, WALKER_START_Y);
 	walker->LoadResource();
 	objects.push_back(walker);
 }

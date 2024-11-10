@@ -204,10 +204,10 @@ void CJasonSmall::SetState(int state)
 	case JASON_SMALL_STATE_JUMP:
 		if (isJumping == 1) break;
 		isClimbing = 0;
-		vy = -JASON_SMALL_JUMP_SPEED_Y;
+		vy = JASON_SMALL_JUMP_SPEED_Y;
 		break;
 	case JASON_SMALL_STATE_RELEASE_JUMP:
-		if (vy < 0) vy += JASON_SMALL_JUMP_SPEED_Y / 2;
+		if (vy < 0) vy -= JASON_SMALL_JUMP_SPEED_Y / 2;
 		break;
 	//CLIMB
 	case JASON_SMALL_STATE_CLIMB:
@@ -217,10 +217,10 @@ void CJasonSmall::SetState(int state)
 		vy = 0;
 		break;
 	case JASON_SMALL_STATE_CLIMB_UP:
-		vy = -JASON_SMALL_CLIMBING_SPEED;
+		vy = JASON_SMALL_CLIMBING_SPEED;
 		break;
 	case JASON_SMALL_STATE_CLIMB_DOWN:
-		vy = JASON_SMALL_CLIMBING_SPEED;
+		vy = -JASON_SMALL_CLIMBING_SPEED;
 		break;
 	case JASON_SMALL_STATE_CLIMB_LEFT:
 		vx = -JASON_SMALL_CLIMBING_SIDE_SPEED;
@@ -239,13 +239,13 @@ void CJasonSmall::SetState(int state)
 		vx = JASON_SMALL_SWIMMING_SPEED;
 		break;
 	case JASON_SMALL_STATE_SWIM_UP:
-		vy = -JASON_SMALL_SWIMMING_UP_SPEED_Y;
+		vy = JASON_SMALL_SWIMMING_UP_SPEED_Y;
 		break;
 	case JASON_SMALL_STATE_SWIM_UP_RELEASE:
 		vy = 0;
 		break;
 	case JASON_SMALL_STATE_SWIM_DOWN:
-		vy = JASON_SMALL_SWIMMING_DOWN_SPEED_Y;
+		vy = -JASON_SMALL_SWIMMING_DOWN_SPEED_Y;
 		break;
 	case JASON_SMALL_STATE_SWIM_RELEASE:
 		isSwimming = 0;
@@ -338,11 +338,11 @@ void CJasonSmall::Update(DWORD dt)
 
 	if (!isClimbing)
 	{
-		if (isSwimming) vy += JASON_SMALL_GRAVITY_SWIM;
-		else vy += JASON_SMALL_GRAVITY * dt;
+		if (isSwimming) vy -= JASON_SMALL_GRAVITY_SWIM;
+		else vy -= JASON_SMALL_GRAVITY * dt;
 	}
 
-	if (y >= 160.0f)
+	if (y <= 160.0f)
 	{
 		vy = 0; y = 160.0f; isJumping = 0;
 	}
@@ -365,7 +365,7 @@ void CJasonSmall::Update(DWORD dt)
 		else isClimbable = 0;
 	}
 
-	DebugOutTitle(L"isClimbable = %0.5f", float(isClimbable));
+	//DebugOutTitle(L"isClimbable = %0.5f", float(isClimbable));
 
 	// simple screen edge collision!!!
 	if (vx > 0 && x > 290) x = 290;
@@ -427,6 +427,14 @@ void CJasonSmall::Render()
 		ani = ID_ANI_JASON_SMALL_FINISH_DEAD;
 	}
 
-	animations->Get(ani)->Render(x, y);
+	camera->UpdateFollowPlayer(this->x, this->y);
+	int drawx = camera->TransitionX(x);
+	int drawy = camera->TransitionY(y);
+	if (((drawx < -30) || (drawx > 320)) &&
+		((drawy < -50) || (drawy > 240)))
+	{
+		return;
+	}
+	else animations->Get(ani)->Render(drawx, drawy);
 }
 

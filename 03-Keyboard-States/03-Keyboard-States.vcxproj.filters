@@ -78,6 +78,9 @@
     <ClCompile Include="CLadder.cpp">
       <Filter>GameObject\Tileset</Filter>
     </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="CLadder.h">
       <Filter>GameObject\Tileset</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

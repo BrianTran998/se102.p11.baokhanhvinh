@@ -6,6 +6,7 @@
 #include "Animations.h"
 #include "Sprite.h"
 #include "Sprites.h"
+#include "CCamera.h"
 
 #define ID_TEX_PLAYER 30
 #define TEXTURES_DIR L"textures"

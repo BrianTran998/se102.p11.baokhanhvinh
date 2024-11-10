@@ -130,6 +130,7 @@
     <ClCompile Include="..\02-Sprite\Animations.cpp" />
     <ClCompile Include="..\02-Sprite\Sprite.cpp" />
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CJasonSmall.cpp" />
     <ClCompile Include="CLadder.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="CCamera.h" />
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CJasonSmall.h" />
     <ClInclude Include="CLadder.h" />

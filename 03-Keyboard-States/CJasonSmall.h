@@ -82,6 +82,7 @@
 extern CTextures* textures;
 extern CSprites* sprites;
 extern CAnimations* animations;
+extern CCamera* camera;
 
 class CJasonSmall: public CPlayer 
 {
