@@ -2,13 +2,18 @@
 
 void CCamera::UpdateFollowPlayer(float playerx, float playery)
 {
-	if (this->x < -100)
+	if (this->x < float(-(w / 5)))
 	{
-		this->x = -100;
+		//Do nothing
 	}
 	else if (playerx - this->x < 140)
 	{
 		this->x = playerx - 140;
+	}
+
+	if (this->x > 450.0f - float(w / 5 * 4))
+	{
+		//Do nothing
 	}
 	else if (playerx - this->x > 180)
 	{
@@ -17,7 +22,7 @@ void CCamera::UpdateFollowPlayer(float playerx, float playery)
 
 	if (this->y < 160)
 	{
-		this->y = 160;
+		//Do nothing
 	}
 	else if (playery - this->y > -100)
 	{
@@ -29,12 +34,12 @@ void CCamera::UpdateFollowPlayer(float playerx, float playery)
 	}
 }
 
-int CCamera::TransitionX(float objectx)
+float CCamera::TransitionX(float objectx)
 {
 	return (objectx - this->x);
 }
 
-int CCamera::TransitionY(float objecty)
+float CCamera::TransitionY(float objecty)
 {
 	return -(objecty - this->y);
 }

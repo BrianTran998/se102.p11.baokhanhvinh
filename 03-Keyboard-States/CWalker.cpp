@@ -99,8 +99,8 @@ void CWalker::Render()
 		else ani = ID_ANI_WALKER_IDLE_RIGHT;
 	}
 	DebugOutTitle(L"y = %0.5f", float(y));
-	int drawx = camera->TransitionX(x);
-	int drawy = camera->TransitionY(y);
+	float drawx = camera->TransitionX(x);
+	float drawy = camera->TransitionY(y);
 	if (((drawx < -30) || (drawx > 320)) &&
 		((drawy < -50) || (drawy > 240)))
 	{

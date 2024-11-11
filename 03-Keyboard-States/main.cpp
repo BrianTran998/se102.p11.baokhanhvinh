@@ -56,7 +56,7 @@
 #define LADDER_X 200.0f
 #define LADDER_HEIGHT 15.0f
 #define BRICK_Y GROUND_Y - 20.0f
-#define NUM_BRICKS 50
+#define NUM_BRICKS 30
 #define NUM_LADDER 10
 
 CJasonSmall* jason_small = NULL;

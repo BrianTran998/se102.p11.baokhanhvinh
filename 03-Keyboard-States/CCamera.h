@@ -10,8 +10,8 @@ public:
 	CCamera() : CGameObject() {};
 	CCamera(float x, float y) : CGameObject(x, y) {};
 	void UpdateFollowPlayer(float playerx, float playery);
-	int TransitionX(float objectx);
-	int TransitionY(float objecty);
+	float TransitionX(float objectx);
+	float TransitionY(float objecty);
 	void Update(DWORD dt) {};
 	void Render() {};
 	~CCamera() {}
