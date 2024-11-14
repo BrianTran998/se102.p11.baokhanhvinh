@@ -28,6 +28,15 @@
     <Filter Include="GameObject\Tileset">
       <UniqueIdentifier>{867abd26-0699-4338-80da-3f3706850f17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameConfig">
+      <UniqueIdentifier>{57223519-7e11-4b94-8714-d1dba1e110b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameConfig\Scene">
+      <UniqueIdentifier>{aa28bc07-0120-4200-818c-ab8ac51e5df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameConfig\GameObject">
+      <UniqueIdentifier>{883ca745-5a39-45a5-a72f-13d88935f0a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -144,5 +153,25 @@
     <ClInclude Include="AutoMover.h">
       <Filter>GameObject\Character\Enemies</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SceneConfig.txt">
+      <Filter>GameConfig</Filter>
+    </Text>
+    <Text Include="scene01.txt">
+      <Filter>GameConfig\Scene</Filter>
+    </Text>
+    <Text Include="AutoMover.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
+    <Text Include="Background.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
+    <Text Include="brick.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
+    <Text Include="Jason.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
   </ItemGroup>
 </Project>

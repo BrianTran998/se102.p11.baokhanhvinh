@@ -1,9 +1,9 @@
 # list of object assets to load in this scene
 [ASSETS]
-Config\GameObject\Jason.txt
-Config\GameObject\brick.txt
-Config\GameObject\AutoMover.txt
-Config\GameObject\Background.txt
+Jason.txt
+brick.txt
+AutoMover.txt
+Background.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type
