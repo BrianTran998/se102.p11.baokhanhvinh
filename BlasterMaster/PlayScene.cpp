@@ -272,8 +272,7 @@ void CPlayScene::Update(DWORD dt)
 	if (cx < 0)
 		cx = 0;
 
-	// TODO: Remove comment for camera function
-	// CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
+	CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
 	// PurgeDeletedObjects();
 }
 
