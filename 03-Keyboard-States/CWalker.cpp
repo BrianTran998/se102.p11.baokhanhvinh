@@ -68,9 +68,9 @@ void CWalker::Update(DWORD dt)
 	if (vx == 0) SetState(WALKER_STATE_WALKING_LEFT);
 
 	// simple screen edge collision!!!
-	if (vx > 0 && x > 290)
+	if (vx > 0 && x > WORLD_WIDTH)
 	{
-		x = 290;
+		x = WORLD_WIDTH;
 		SetState(WALKER_STATE_WALKING_LEFT);
 	}
 	if (vx < 0 && x < 0)
@@ -99,14 +99,7 @@ void CWalker::Render()
 		else ani = ID_ANI_WALKER_IDLE_RIGHT;
 	}
 	DebugOutTitle(L"y = %0.5f", float(y));
-	float drawx = camera->TransitionX(x);
-	float drawy = camera->TransitionY(y);
-	if (((drawx < -30) || (drawx > 320)) &&
-		((drawy < -50) || (drawy > 240)))
-	{
-		return;
-	}
-	else animations->Get(ani)->Render(drawx, drawy);
+	animations->Get(ani)->Render(x, y);
 }
 
 

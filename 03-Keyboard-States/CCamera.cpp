@@ -1,5 +1,18 @@
 #include "CCamera.h"
 
+CCamera::CCamera()
+{
+	x = y = w = h = 0;
+}
+
+CCamera::CCamera(float x, float y, int width, int height)
+{
+	this->x = x;
+	this->y = y;
+	this->w = width;
+	this->h = height;
+}
+
 void CCamera::UpdateFollowPlayer(float playerx, float playery)
 {
 	if (this->x < float(-(w / 5)))
@@ -11,7 +24,7 @@ void CCamera::UpdateFollowPlayer(float playerx, float playery)
 		this->x = playerx - 140;
 	}
 
-	if (this->x > 450.0f - float(w / 5 * 4))
+	if (this->x > WORLD_WIDTH - float(w / 5 * 4))
 	{
 		//Do nothing
 	}
@@ -34,12 +47,8 @@ void CCamera::UpdateFollowPlayer(float playerx, float playery)
 	}
 }
 
-float CCamera::TransitionX(float objectx)
+void CCamera::Transition(float &objectx, float &objecty)
 {
-	return (objectx - this->x);
-}
-
-float CCamera::TransitionY(float objecty)
-{
-	return -(objecty - this->y);
+	objectx = objectx - this->x;
+	objecty = -(objecty - this->y);
 }

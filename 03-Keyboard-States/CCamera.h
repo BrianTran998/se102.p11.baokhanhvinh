@@ -1,19 +1,19 @@
 #pragma once
 #include "GameObject.h"
+#include "Common.h"
 
-class CCamera: public CGameObject
+class CCamera
 {
 protected:
-	int w = 320;
-	int h = 240;
+	float x = 0;
+	float y = 0;
+	int w = 0;
+	int h = 0;
 public:
-	CCamera() : CGameObject() {};
-	CCamera(float x, float y) : CGameObject(x, y) {};
+	CCamera();
+	CCamera(float x, float y, int width, int height);
 	void UpdateFollowPlayer(float playerx, float playery);
-	float TransitionX(float objectx);
-	float TransitionY(float objecty);
-	void Update(DWORD dt) {};
-	void Render() {};
+	void Transition(float& objectx, float& objecty);
 	~CCamera() {}
 };
 

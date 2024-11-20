@@ -56,12 +56,12 @@
 #define LADDER_X 200.0f
 #define LADDER_HEIGHT 15.0f
 #define BRICK_Y GROUND_Y - 20.0f
-#define NUM_BRICKS 30
+#define NUM_BRICKS 126
 #define NUM_LADDER 10
 
 CJasonSmall* jason_small = NULL;
 CWalker* walker = NULL;
-CCamera* camera = new CCamera(300, 300);
+CCamera* camera = new CCamera(300, 300, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 CSampleKeyHandler* keyHandler;
 

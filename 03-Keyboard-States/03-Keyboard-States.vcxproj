@@ -126,9 +126,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\02-Sprite\Animation.cpp" />
     <ClCompile Include="..\02-Sprite\Animations.cpp" />
     <ClCompile Include="..\02-Sprite\Sprite.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CEnemy.cpp" />
@@ -145,6 +145,7 @@
     <ClCompile Include="Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\02-Sprite\Animations.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Animations.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CJasonSmall.h" />
     <ClInclude Include="CLadder.h" />
+    <ClInclude Include="Common.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CWalker.h" />
     <ClInclude Include="KeyEventHandler.h" />

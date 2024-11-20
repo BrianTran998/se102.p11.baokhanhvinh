@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <d3dx10.h>
 #include <vector>
+#include "Common.h"
 
 using namespace std;
 

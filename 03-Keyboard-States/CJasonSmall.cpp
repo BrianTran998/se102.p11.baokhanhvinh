@@ -368,7 +368,7 @@ void CJasonSmall::Update(DWORD dt)
 	//DebugOutTitle(L"isClimbable = %0.5f", float(isClimbable));
 
 	// simple screen edge collision!!!
-	if (vx > 0 && x > 450) x = 450;
+	if (vx > 0 && x > WORLD_WIDTH) x = WORLD_WIDTH;
 	if (vx < 0 && x < 0) x = 0;
 }
 
@@ -428,13 +428,6 @@ void CJasonSmall::Render()
 	}
 
 	camera->UpdateFollowPlayer(this->x, this->y);
-	float drawx = camera->TransitionX(x);
-	float drawy = camera->TransitionY(y);
-	if (((drawx < -30) || (drawx > 320)) &&
-		((drawy < -50) || (drawy > 240)))
-	{
-		return;
-	}
-	else animations->Get(ani)->Render(drawx, drawy);
+	animations->Get(ani)->Render(x, y);
 }
 
