@@ -137,8 +137,9 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
-	objects = tree->getObjectsInView(camera);
-	
+	vector<LPGAMEOBJECT> addobject = tree->getObjectsInView(camera);
+	objects.insert(objects.end(), addobject.begin(), addobject.end());
+	DebugOutTitle(L"objects.size() = %0.5f", float(objects.size()));
 	for (int i = 0; i < (int)objects.size(); i++)
 	{
 		objects[i]->Update(dt);

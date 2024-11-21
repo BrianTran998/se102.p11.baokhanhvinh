@@ -14,8 +14,8 @@ protected:
 	float x; 
 	float y;
 	//Size
-	int width = 0;
-	int height = 0;
+	int w = 0;
+	int h = 0;
 	//Velocity
 	float vx;
 	float vy;

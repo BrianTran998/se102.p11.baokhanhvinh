@@ -26,6 +26,9 @@ extern CCamera* camera;
 
 class CLadder: public CGameObject
 {
+protected:
+	int w = 16;
+	int h = 16;
 public:
 	CLadder() : CGameObject() {};
 	CLadder(float x, float y) : CGameObject(x, y) {};

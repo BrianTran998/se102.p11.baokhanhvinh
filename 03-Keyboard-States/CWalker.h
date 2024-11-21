@@ -35,6 +35,8 @@ extern CCamera* camera;
 class CWalker: public CEnemy
 {
 protected:
+	int w = 20;
+	int h = 50;
 public:
 	CWalker() : CEnemy() {};
 	CWalker(float x, float y) : CEnemy(x, y) {};

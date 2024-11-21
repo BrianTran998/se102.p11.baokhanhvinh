@@ -87,6 +87,9 @@ extern CCamera* camera;
 class CJasonSmall: public CPlayer 
 {
 protected:
+	int w = 20;
+	int h = 50;
+
 	int isJumping = 0;
 	int isCrawling = 0;
 	int isClimbing = 0;

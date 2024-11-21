@@ -15,6 +15,8 @@ public:
 	void UpdateFollowPlayer(float playerx, float playery);
 	void Transition(float& objectx, float& objecty);
 	bool isLocationInCamera(float x, float y);
+	bool isInSceneNode(float scenex, float sceney, float scenew, float sceneh);
+
 	~CCamera() {}
 };
 

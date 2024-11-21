@@ -53,14 +53,61 @@ void CCamera::Transition(float &objectx, float &objecty)
 	objecty = -(objecty - this->y);
 }
 
-bool CCamera::isLocationInCamera(float x, float y)
+bool CCamera::isLocationInCamera(float objectx, float objecty)
 {
-	if (x >= this->x &&
-		x <= this->x + this->w &&
-		y <= this->y &&
-		y >= this->y - this->h)
+	if (objectx >= this->x &&
+		objectx <= this->x + this->w &&
+		objecty <= this->y &&
+		objecty >= this->y - this->h)
 	{
 		return true;
 	}
 	else return false;
+}
+
+bool CCamera::isInSceneNode(float scenex, float sceney, float scenew, float sceneh)
+{
+	float objectTopLeftX = this->x;
+	float objectTopLeftY = this->y;
+	float objectTopRightX = this->x + this->w;
+	float objectTopRightY = this->y;
+	float objectBottomLeftX = this->x;
+	float objectBottomLeftY = this->y - this->h;
+	float objectBottomRightX = this->x + this->w;
+	float objectBottomRightY = this->y - this->h;
+
+	//Case camera is contained in scene node
+	if (objectTopLeftX >= scenex &&
+		objectTopLeftX <= scenex + scenew &&
+		objectTopLeftY <= sceney &&
+		objectTopLeftY >= sceney - sceneh)
+	{
+		return true;
+	}
+
+	if (objectTopRightX >= scenex &&
+		objectTopRightX <= scenex + scenew &&
+		objectTopRightY <= sceney &&
+		objectTopRightY >= sceney - sceneh)
+	{
+		return true;
+	}
+
+	if (objectBottomLeftX >= scenex &&
+		objectBottomLeftX <= scenex + scenew &&
+		objectBottomLeftY <= sceney &&
+		objectBottomLeftY >= sceney - sceneh)
+	{
+		return true;
+	}
+
+	if (objectBottomRightX >= scenex &&
+		objectBottomRightX <= scenex + scenew &&
+		objectBottomRightY <= sceney &&
+		objectBottomRightY >= sceney - sceneh)
+	{
+		return true;
+	}
+
+	return false;
 }

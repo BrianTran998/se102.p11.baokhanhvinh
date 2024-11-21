@@ -38,6 +38,7 @@ void CSceneNode::addObject(CGameObject* obj)
 
 bool CSceneNode::isTouchingCamera(CCamera* camera)
 {
+    //Case scene node is in camera
     float sceneTopLeftX = this->x;
     float sceneTopLeftY = this->y;
     float sceneTopRightX = this->x + this->width;
@@ -54,7 +55,13 @@ bool CSceneNode::isTouchingCamera(CCamera* camera)
     {
         return true;
     }
-    else return false;
+    //Case camera is in scene node
+    if (camera->isInSceneNode(this->x, this->y, this->width, this->height))
+    {
+        return true;
+    }
+
+    return false;
 }
 
 void CSceneNode::getObjects(std::vector<CGameObject*>& objectList)
@@ -64,13 +71,7 @@ void CSceneNode::getObjects(std::vector<CGameObject*>& objectList)
             objectList.push_back(obj); // Add to list if not already present
         }
     }
-    objects.clear(); //Clear after gotten all objects in this node
-    // Collect objects from children if they exist
-    for (int i = 0; i < 4; ++i) {
-        if (children[i]) {
-            children[i]->getObjects(objectList);
-        }
-    }
+    objects.clear(); //Clear after gotten all objects in this nodes
 }
 
 bool CSceneNode::isObjectInList(CGameObject* obj, std::vector<CGameObject*>& objectList)
@@ -109,8 +110,8 @@ std::vector<CGameObject*> CQuadTree::getObjectsInView(CCamera* camera)
 {
     std::vector<CGameObject*> visibleObjects;
     std::vector<CSceneNode*> nodesToCheck = { root };
-    DebugOutTitle(L"root->isTouchingCamera(camera) = %0.5f", float(root->isTouchingCamera(camera)));
     // Traverse the nodes and find the ones that touch the camera view
+    
     for (size_t i = 0; i < nodesToCheck.size(); ++i) {
         CSceneNode* node = nodesToCheck[i];
 
@@ -125,5 +126,6 @@ std::vector<CGameObject*> CQuadTree::getObjectsInView(CCamera* camera)
             }
         }
     }
+    
     return visibleObjects;
 }

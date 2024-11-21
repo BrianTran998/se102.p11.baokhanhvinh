@@ -8,12 +8,12 @@ bool CGameObject::isInSceneNode(float scenex, float sceney, float scenew, float 
 {
 	float objectTopLeftX = this->x;
 	float objectTopLeftY = this->y;
-	float objectTopRightX = this->x + this->width;
+	float objectTopRightX = this->x + this->w;
 	float objectTopRightY = this->y;
 	float objectBottomLeftX = this->x;
-	float objectBottomLeftY = this->y - this->height;
-	float objectBottomRightX = this->x + this->width;
-	float objectBottomRightY = this->y - this->height;
+	float objectBottomLeftY = this->y - this->h;
+	float objectBottomRightX = this->x + this->w;
+	float objectBottomRightY = this->y - this->h;
 
 	//Case object is contained in scene node
 	if (objectTopLeftX >= scenex &&
