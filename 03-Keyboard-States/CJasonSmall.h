@@ -98,7 +98,7 @@ public:
 	CJasonSmall() : CPlayer() {};
 	CJasonSmall(float x, float y) : CPlayer(x, y) {};
 
-	void LoadResource();
+	static void LoadResource();
 
 	void SetState(int state = JASON_SMALL_STATE_IDLE);
 

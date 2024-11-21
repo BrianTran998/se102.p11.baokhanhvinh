@@ -13,6 +13,9 @@ protected:
 	//Location
 	float x; 
 	float y;
+	//Size
+	int width = 0;
+	int height = 0;
 	//Velocity
 	float vx;
 	float vy;
@@ -26,6 +29,8 @@ public:
 
 	void SetState(int state) { this->state = state; }
 	int GetState() { return this->state; }
+
+	bool isInSceneNode(float scenex, float sceney, float scenew, float sceneh);
 
 	CGameObject();
 	CGameObject(float x, float y):CGameObject() { this->x = x; this->y = y; }

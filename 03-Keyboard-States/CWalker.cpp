@@ -98,7 +98,6 @@ void CWalker::Render()
 		if (vx != 0) ani = ID_ANI_WALKER_WALKING_RIGHT;
 		else ani = ID_ANI_WALKER_IDLE_RIGHT;
 	}
-	DebugOutTitle(L"y = %0.5f", float(y));
 	animations->Get(ani)->Render(x, y);
 }
 

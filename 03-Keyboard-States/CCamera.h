@@ -14,6 +14,7 @@ public:
 	CCamera(float x, float y, int width, int height);
 	void UpdateFollowPlayer(float playerx, float playery);
 	void Transition(float& objectx, float& objecty);
+	bool isLocationInCamera(float x, float y);
 	~CCamera() {}
 };
 

@@ -26,6 +26,7 @@
 #include "Brick.h"
 #include "CLadder.h"
 #include "CCamera.h"
+#include "CQuadTree.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -46,10 +47,10 @@
 #define TEXTURE_PATH_MISC TEXTURES_DIR "\\misc.png"
 
 #define JASON_SMALL_START_X 100.0f
-#define JASON_SMALL_START_Y 300.0f
+#define JASON_SMALL_START_Y 200.0f
 
-#define WALKER_START_X 150.0f
-#define WALKER_START_Y 500.0f
+#define WALKER_START_X 100.0f
+#define WALKER_START_Y 200.0f
 
 #define GROUND_Y 160.0f
 #define BRICK_X 0.0f
@@ -58,10 +59,11 @@
 #define BRICK_Y GROUND_Y - 20.0f
 #define NUM_BRICKS 126
 #define NUM_LADDER 10
+#define NUM_WALKER 7
 
 CJasonSmall* jason_small = NULL;
-CWalker* walker = NULL;
-CCamera* camera = new CCamera(300, 300, SCREEN_WIDTH, SCREEN_HEIGHT);
+CCamera* camera = new CCamera(0, 200, SCREEN_WIDTH, SCREEN_HEIGHT);
+CQuadTree* tree = NULL;
 
 CSampleKeyHandler* keyHandler;
 
@@ -103,6 +105,8 @@ void LoadResources()
 	animations->Add(ID_ANI_BRICK,ani);
 
 	CLadder::LoadResource();
+	CJasonSmall::LoadResource();
+	CWalker::LoadResource();
 
 	for (int i = 0; i < NUM_LADDER; i++)
 	{
@@ -117,12 +121,14 @@ void LoadResources()
 	}
 
 	jason_small = new CJasonSmall(JASON_SMALL_START_X, JASON_SMALL_START_Y);
-	jason_small->LoadResource();
 	objects.push_back(jason_small);
-
-	walker = new CWalker(WALKER_START_X, WALKER_START_Y);
-	walker->LoadResource();
-	objects.push_back(walker);
+	for (int i = 0; i < NUM_WALKER; i++)
+	{
+		CWalker* walker = new CWalker(WALKER_START_X + i * 250.0f, WALKER_START_Y);
+		objects.push_back(walker);
+	}
+	tree = new CQuadTree(WORLD_WIDTH, WORLD_HEIGHT, objects);
+	objects.clear();
 }
 
 /*
@@ -131,6 +137,8 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
+	objects = tree->getObjectsInView(camera);
+	
 	for (int i = 0; i < (int)objects.size(); i++)
 	{
 		objects[i]->Update(dt);

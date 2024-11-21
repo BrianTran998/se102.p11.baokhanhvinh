@@ -39,7 +39,7 @@ public:
 	CWalker() : CEnemy() {};
 	CWalker(float x, float y) : CEnemy(x, y) {};
 
-	void LoadResource();
+	static void LoadResource();
 	
 	void SetState(int state = WALKER_STATE_IDLE);
 	

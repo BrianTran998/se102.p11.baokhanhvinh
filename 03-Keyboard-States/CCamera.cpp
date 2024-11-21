@@ -52,3 +52,15 @@ void CCamera::Transition(float &objectx, float &objecty)
 	objectx = objectx - this->x;
 	objecty = -(objecty - this->y);
 }
+
+bool CCamera::isLocationInCamera(float x, float y)
+{
+	if (x >= this->x &&
+		x <= this->x + this->w &&
+		y <= this->y &&
+		y >= this->y - this->h)
+	{
+		return true;
+	}
+	else return false;
+}
