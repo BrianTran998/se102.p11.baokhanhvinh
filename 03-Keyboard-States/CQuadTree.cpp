@@ -39,19 +39,7 @@ void CSceneNode::addObject(CGameObject* obj)
 bool CSceneNode::isTouchingCamera(CCamera* camera)
 {
     //Case scene node is in camera
-    float sceneTopLeftX = this->x;
-    float sceneTopLeftY = this->y;
-    float sceneTopRightX = this->x + this->width;
-    float sceneTopRightY = this->y;
-    float sceneBottomLeftX = this->x;
-    float sceneBottomLeftY = this->y - this->height;
-    float sceneBottomRightX = this->x + this->width;
-    float sceneBottomRightY = this->y - this->height;
-
-    if (camera->isLocationInCamera(sceneTopLeftX, sceneTopLeftY) ||
-        camera->isLocationInCamera(sceneTopRightX, sceneTopRightY) ||
-        camera->isLocationInCamera(sceneBottomLeftX, sceneBottomLeftY) ||
-        camera->isLocationInCamera(sceneBottomRightX, sceneBottomRightY))
+    if (camera->isObjectInCamera(this->x, this->y, this->width, this->height))
     {
         return true;
     }

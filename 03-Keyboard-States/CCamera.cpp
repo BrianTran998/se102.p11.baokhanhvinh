@@ -53,12 +53,23 @@ void CCamera::Transition(float &objectx, float &objecty)
 	objecty = -(objecty - this->y);
 }
 
-bool CCamera::isLocationInCamera(float objectx, float objecty)
+bool CCamera::isObjectInCamera(float objectx, float objecty, float objectw, float objecth)
 {
-	if (objectx >= this->x &&
-		objectx <= this->x + this->w &&
-		objecty <= this->y &&
-		objecty >= this->y - this->h)
+	if (
+		(	//Object left x or object right x is inside camera
+			(objectx >= this->x &&
+			objectx <= this->x + this->w) ||
+			(objectx+objectw >=this->x &&
+			objectx+objectw <= this->x+this->w)
+		)
+		&&
+		(	//Object top y or object bottom y is inside camera
+			(objecty <= this->y &&
+			objecty >= this->y - this->h) ||
+			(objecty-objecth <= this->y &&
+			objecty-objecth >= this->y-this->h)
+		)
+	   )
 	{
 		return true;
 	}
@@ -67,47 +78,24 @@ bool CCamera::isLocationInCamera(float objectx, float objecty)
 
 bool CCamera::isInSceneNode(float scenex, float sceney, float scenew, float sceneh)
 {
-	float objectTopLeftX = this->x;
-	float objectTopLeftY = this->y;
-	float objectTopRightX = this->x + this->w;
-	float objectTopRightY = this->y;
-	float objectBottomLeftX = this->x;
-	float objectBottomLeftY = this->y - this->h;
-	float objectBottomRightX = this->x + this->w;
-	float objectBottomRightY = this->y - this->h;
-
 	//Case camera is contained in scene node
-	if (objectTopLeftX >= scenex &&
-		objectTopLeftX <= scenex + scenew &&
-		objectTopLeftY <= sceney &&
-		objectTopLeftY >= sceney - sceneh)
+	if (
+		(	//Camera x left or right is inside scene node
+			(this->x >= scenex &&
+				this->x <= scenex + scenew) ||
+			(this->x + this->w >= scenex &&
+				this->x + this->w <= scenex + scenew)
+		)
+		&&
+		(	//Camera y top or bottom is inside scene node
+			(this->y <= sceney &&
+				this->y >= sceney - sceneh) ||
+			(this->y - this->h <= sceney &&
+				this->y - this->h >= sceney - sceneh)
+		)
+	   )
 	{
 		return true;
 	}
-
-	if (objectTopRightX >= scenex &&
-		objectTopRightX <= scenex + scenew &&
-		objectTopRightY <= sceney &&
-		objectTopRightY >= sceney - sceneh)
-	{
-		return true;
-	}
-
-	if (objectBottomLeftX >= scenex &&
-		objectBottomLeftX <= scenex + scenew &&
-		objectBottomLeftY <= sceney &&
-		objectBottomLeftY >= sceney - sceneh)
-	{
-		return true;
-	}
-
-	if (objectBottomRightX >= scenex &&
-		objectBottomRightX <= scenex + scenew &&
-		objectBottomRightY <= sceney &&
-		objectBottomRightY >= sceney - sceneh)
-	{
-		return true;
-	}
-
-	return false;
+	else return false;
 }

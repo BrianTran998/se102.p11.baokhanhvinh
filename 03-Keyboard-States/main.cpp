@@ -124,7 +124,7 @@ void LoadResources()
 	objects.push_back(jason_small);
 	for (int i = 0; i < NUM_WALKER; i++)
 	{
-		CWalker* walker = new CWalker(WALKER_START_X + i * 250.0f, WALKER_START_Y);
+		CWalker* walker = new CWalker(WALKER_START_X + i * 100.0f, WALKER_START_Y);
 		objects.push_back(walker);
 	}
 	tree = new CQuadTree(WORLD_WIDTH, WORLD_HEIGHT, objects);

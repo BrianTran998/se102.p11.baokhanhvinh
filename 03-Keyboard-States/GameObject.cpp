@@ -6,47 +6,26 @@
 
 bool CGameObject::isInSceneNode(float scenex, float sceney, float scenew, float sceneh)
 {
-	float objectTopLeftX = this->x;
-	float objectTopLeftY = this->y;
-	float objectTopRightX = this->x + this->w;
-	float objectTopRightY = this->y;
-	float objectBottomLeftX = this->x;
-	float objectBottomLeftY = this->y - this->h;
-	float objectBottomRightX = this->x + this->w;
-	float objectBottomRightY = this->y - this->h;
-
 	//Case object is contained in scene node
-	if (objectTopLeftX >= scenex &&
-		objectTopLeftX <= scenex + scenew &&
-		objectTopLeftY <= sceney &&
-		objectTopLeftY >= sceney - sceneh)
+	if (
+		(	//Object x left or right is inside scene node
+			(this->x >= scenex &&
+				this->x <= scenex + scenew) ||
+			(this->x + this->w >= scenex &&
+				this->x + this->w <= scenex + scenew)
+			)
+		&&
+		(	//Object y top or bottom is inside scene node
+			(this->y <= sceney &&
+				this->y >= sceney - sceneh) ||
+			(this->y - this->h <= sceney &&
+				this->y - this->h >= sceney - sceneh)
+		)
+	   )
 	{
 		return true;
 	}
 
-	if (objectTopRightX >= scenex &&
-		objectTopRightX <= scenex + scenew &&
-		objectTopRightY <= sceney &&
-		objectTopRightY >= sceney - sceneh)
-	{
-		return true;
-	}
-
-	if (objectBottomLeftX >= scenex &&
-		objectBottomLeftX <= scenex + scenew &&
-		objectBottomLeftY <= sceney &&
-		objectBottomLeftY >= sceney - sceneh)
-	{
-		return true;
-	}
-
-	if (objectBottomRightX >= scenex &&
-		objectBottomRightX <= scenex + scenew &&
-		objectBottomRightY <= sceney &&
-		objectBottomRightY >= sceney - sceneh)
-	{
-		return true;
-	}
 	//Case object is not contained in scene node, but still crosses it
 	//Insert code here
 
