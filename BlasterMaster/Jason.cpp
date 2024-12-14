@@ -122,6 +122,40 @@ int CJason::GetAniIdBig()
 	return aniId;
 }
 
+void CJason::SetKey(int KeyCode, int KeyState)
+{
+	// No key -1, Key down 0, Key up 1
+	if (KeyState == -1)
+	{
+		this->SetState(JASON_STATE_IDLE);
+	}
+	else
+	{
+		switch (KeyCode)
+		{
+		case DIK_LEFT:
+			this->SetState(JASON_STATE_WALKING_LEFT);
+			break;
+
+		case DIK_RIGHT:
+			this->SetState(JASON_STATE_WALKING_RIGHT);
+			break;
+
+		case DIK_UP:
+			break;
+		case DIK_DOWN:
+			break;
+		}
+	}
+	if (KeyCode == DIK_S)
+	{
+		if (KeyState == 0)
+			this->SetState(JASON_STATE_JUMP);
+		else if (KeyState == 1)
+			this->SetState(JASON_STATE_RELEASE_JUMP);
+	}
+}
+
 void CJason::Render()
 {
 	CAnimations *animations = CAnimations::GetInstance();

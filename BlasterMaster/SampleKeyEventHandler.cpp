@@ -8,67 +8,64 @@
 
 void CSampleKeyHandler::OnKeyDown(int KeyCode)
 {
-	//DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
-	CJason* mario = (CJason *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer(); 
-
+	CJason *jason = (CJason *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 	switch (KeyCode)
 	{
-	case DIK_DOWN:
-		mario->SetState(JASON_STATE_SIT);
-		break;
 	case DIK_S:
-		mario->SetState(JASON_STATE_JUMP);
+		jason->SetKey(DIK_S, 0);
 		break;
-	// case DIK_1:
-	// 	mario->SetLevel(JASON_LEVEL_SMALL);
-	// 	break;
-	case DIK_2:
-		mario->SetLevel(JASON_LEVEL_BIG);
-		break;
-	// case DIK_0:
-	// 	mario->SetState(JASON_STATE_DIE);
-	// 	break;
-	// case DIK_R: // reset
-	// 	//Reload();
-	// 	break;
 	}
 }
 
 void CSampleKeyHandler::OnKeyUp(int KeyCode)
 {
-	//DebugOut(L"[INFO] KeyUp: %d\n", KeyCode);
-
-	CJason* mario = (CJason*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	CJason *jason = (CJason *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	DebugOut(L"[INFO] KeyUp: %d\n", KeyCode);
 	switch (KeyCode)
 	{
 	case DIK_S:
-		mario->SetState(JASON_STATE_RELEASE_JUMP);
+		jason->SetKey(DIK_S, 1);
 		break;
 	case DIK_DOWN:
-		mario->SetState(JASON_STATE_SIT_RELEASE);
+		jason->SetKey(DIK_DOWN, 1);
+		break;
+	case DIK_UP:
+		jason->SetKey(DIK_UP, 1);
 		break;
 	}
 }
 
 void CSampleKeyHandler::KeyState(BYTE *states)
 {
-	LPGAME game = CGame::GetInstance();
-	CJason* mario = (CJason*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	CJason *jason = (CJason *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	CGame *game = CGame::GetInstance();
 
 	if (game->IsKeyDown(DIK_RIGHT))
 	{
-		if (game->IsKeyDown(DIK_A))
-			mario->SetState(JASON_STATE_RUNNING_RIGHT);
-		else
-			mario->SetState(JASON_STATE_WALKING_RIGHT);
+		jason->SetKey(DIK_RIGHT, 0);
 	}
 	else if (game->IsKeyDown(DIK_LEFT))
 	{
-		if (game->IsKeyDown(DIK_A))
-			mario->SetState(JASON_STATE_RUNNING_LEFT);
-		else
-			mario->SetState(JASON_STATE_WALKING_LEFT);
+		jason->SetKey(DIK_LEFT, 0);
 	}
 	else
-		mario->SetState(JASON_STATE_IDLE);
+	{
+		jason->SetKey(DIK_LEFT, -1);
+	}
+
+	// Sitting state has higher priority
+	if (game->IsKeyDown(DIK_DOWN))
+	{
+		jason->SetKey(DIK_DOWN, 0);
+	}
+	else if (game->IsKeyDown(DIK_UP))
+	{
+		jason->SetKey(DIK_UP, 0);
+	}
+
+	if (game->IsKeyDown(DIK_K))
+	{
+		jason->SetKey(DIK_K, 0);
+	}
 }

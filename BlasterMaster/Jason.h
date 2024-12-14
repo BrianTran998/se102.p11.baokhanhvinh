@@ -5,6 +5,7 @@
 #include "Animations.h"
 
 #include "debug.h"
+#include <dinput.h>
 
 #define JASON_WALKING_SPEED 0.1f
 #define JASON_RUNNING_SPEED 0.2f
@@ -106,6 +107,8 @@ public:
 	void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects);
 	void Render();
 	void SetState(int state);
+
+	void SetKey(int KeyCode = DIK_LEFT, int KeyState = -1);
 
 	int IsCollidable()
 	{
