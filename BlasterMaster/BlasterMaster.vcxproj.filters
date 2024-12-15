@@ -13,6 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{08da0c64-74bb-41b1-b640-3abda0ad0169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Character">
+      <UniqueIdentifier>{906c6e46-f6fc-4b02-b398-e3951056fec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Character\Player">
+      <UniqueIdentifier>{ebbba5a9-57e1-4058-ab84-6bed08c17eb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Character\Enemies">
+      <UniqueIdentifier>{8383b29c-6ac6-4da4-932d-b8c48e0697af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Tileset">
+      <UniqueIdentifier>{867abd26-0699-4338-80da-3f3706850f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameConfig">
+      <UniqueIdentifier>{57223519-7e11-4b94-8714-d1dba1e110b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameConfig\Scene">
+      <UniqueIdentifier>{aa28bc07-0120-4200-818c-ab8ac51e5df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameConfig\GameObject">
+      <UniqueIdentifier>{883ca745-5a39-45a5-a72f-13d88935f0a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -28,9 +52,6 @@
     <ClCompile Include="Animations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -41,12 +62,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AutoMover.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Jason.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SampleKeyEventHandler.cpp">
@@ -67,6 +82,15 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>GameObject\Tileset</Filter>
+    </ClCompile>
+    <ClCompile Include="Jason.cpp">
+      <Filter>GameObject\Character\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoMover.cpp">
+      <Filter>GameObject\Character\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -81,9 +105,6 @@
     <ClInclude Include="AssetIDs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -96,13 +117,7 @@
     <ClInclude Include="GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AutoMover.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="KeyEventHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Jason.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SampleKeyEventHandler.h">
@@ -129,5 +144,34 @@
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>GameObject\Tileset</Filter>
+    </ClInclude>
+    <ClInclude Include="Jason.h">
+      <Filter>GameObject\Character\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoMover.h">
+      <Filter>GameObject\Character\Enemies</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SceneConfig.txt">
+      <Filter>GameConfig</Filter>
+    </Text>
+    <Text Include="scene01.txt">
+      <Filter>GameConfig\Scene</Filter>
+    </Text>
+    <Text Include="AutoMover.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
+    <Text Include="Background.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
+    <Text Include="brick.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
+    <Text Include="Jason.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
   </ItemGroup>
 </Project>

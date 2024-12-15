@@ -186,6 +186,14 @@
     <ClInclude Include="Textures.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="AutoMover.txt" />
+    <Text Include="Background.txt" />
+    <Text Include="brick.txt" />
+    <Text Include="Jason.txt" />
+    <Text Include="scene01.txt" />
+    <Text Include="SceneConfig.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\Microsoft.DXSDK.D3DX.9.29.952.8\build\native\Microsoft.DXSDK.D3DX.targets" Condition="Exists('..\packages\Microsoft.DXSDK.D3DX.9.29.952.8\build\native\Microsoft.DXSDK.D3DX.targets')" />

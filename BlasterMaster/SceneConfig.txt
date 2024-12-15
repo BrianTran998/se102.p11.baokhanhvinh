@@ -7,7 +7,7 @@ height	240
 # type: 0: intro, 1: play scene 
 [SCENES]
 0	intro.txt
-1	Config\Scene\scene01.txt
+1	scene01.txt
 
 # id	file 
 [TEXTURES]
