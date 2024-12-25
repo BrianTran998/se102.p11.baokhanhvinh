@@ -91,6 +91,9 @@
     <ClCompile Include="AutoMover.cpp">
       <Filter>GameObject\Character\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Sophia.cpp">
+      <Filter>GameObject\Character\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -152,6 +155,9 @@
     </ClInclude>
     <ClInclude Include="AutoMover.h">
       <Filter>GameObject\Character\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Sophia.h">
+      <Filter>GameObject\Character\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

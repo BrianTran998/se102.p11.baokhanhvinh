@@ -16,3 +16,4 @@ height	240
 10	Textures\enemies.png
 20	Textures\misc.png
 30	Textures\level2-side.png
+40	Textures\sophiatank.png
