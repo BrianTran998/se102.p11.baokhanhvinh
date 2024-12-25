@@ -35,12 +35,12 @@ Background.txt
 1	336	180
 1	352	180
 
-# Background
-3	150	105
-
 # Jason
 0	20	10
 
 # AutoMover
 2	300	150
 2	200	100
+
+[MAP]
+9000	Area1_v1.txt	25	115	9	13	15	15

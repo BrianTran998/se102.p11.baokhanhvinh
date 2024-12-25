@@ -41,6 +41,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="ClassDiagram.cd" />
+    <None Include="Area1_v1.tmx">
+      <Filter>GameConfig\Scene</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -93,6 +96,9 @@
     </ClCompile>
     <ClCompile Include="Sophia.cpp">
       <Filter>GameObject\Character\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +165,9 @@
     <ClInclude Include="Sophia.h">
       <Filter>GameObject\Character\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SceneConfig.txt">
@@ -178,6 +187,9 @@
     </Text>
     <Text Include="Jason.txt">
       <Filter>GameConfig\GameObject</Filter>
+    </Text>
+    <Text Include="Area1_v1.txt">
+      <Filter>GameConfig\Scene</Filter>
     </Text>
   </ItemGroup>
 </Project>

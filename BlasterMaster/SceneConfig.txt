@@ -17,3 +17,4 @@ height	240
 20	Textures\misc.png
 30	Textures\level2-side.png
 40	Textures\sophiatank.png
+9000	Textures\Area1_v1.png

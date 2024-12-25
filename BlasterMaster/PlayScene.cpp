@@ -6,6 +6,7 @@
 #include "Utils.h"
 #include "Textures.h"
 #include "Sprites.h"
+#include "Map.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -17,6 +18,8 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 	key_handler = new CSampleKeyHandler(this);
 }
 
+#define SCENE_SECTION_MAP 3
+
 #define SCENE_SECTION_UNKNOWN -1
 #define SCENE_SECTION_ASSETS 1
 #define SCENE_SECTION_OBJECTS 2
@@ -26,6 +29,8 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 #define ASSETS_SECTION_ANIMATIONS 2
 
 #define MAX_SCENE_LINE 1024
+
+Map *map;
 
 void CPlayScene::_ParseSection_SPRITES(string line)
 {
@@ -137,6 +142,23 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	objects.push_back(obj);
 }
 
+void CPlayScene::_ParseSection_MAP(string line)
+{
+	vector<string> tokens = split(line);
+	if (tokens.size() < 8)
+		return;
+	int IDtex = atoi(tokens[0].c_str());
+	wstring mapPath = ToWSTR(tokens[1]);
+	int mapRow = atoi(tokens[2].c_str());
+	int mapColumn = atoi(tokens[3].c_str());
+	int tileRow = atoi(tokens[4].c_str());
+	int tileColumn = atoi(tokens[5].c_str());
+	int tileWidth = atoi(tokens[6].c_str());
+	int tileHeight = atoi(tokens[7].c_str());
+
+	map = new Map(IDtex, mapPath.c_str(), mapRow, mapColumn, tileRow, tileColumn, tileWidth, tileHeight);
+}
+
 void CPlayScene::LoadAssets(LPCWSTR assetFile)
 {
 	DebugOut(L"[INFO] Start loading assets from : %s \n", assetFile);
@@ -164,6 +186,11 @@ void CPlayScene::LoadAssets(LPCWSTR assetFile)
 			section = ASSETS_SECTION_ANIMATIONS;
 			continue;
 		};
+		if (line == "[MAP]")
+		{
+			section = SCENE_SECTION_MAP;
+			continue;
+		};
 		if (line[0] == '[')
 		{
 			section = SCENE_SECTION_UNKNOWN;
@@ -180,6 +207,9 @@ void CPlayScene::LoadAssets(LPCWSTR assetFile)
 			break;
 		case ASSETS_SECTION_ANIMATIONS:
 			_ParseSection_ANIMATIONS(line);
+			break;
+		case SCENE_SECTION_MAP:
+			_ParseSection_MAP(line);
 			break;
 		}
 	}
@@ -216,6 +246,11 @@ void CPlayScene::Load()
 			section = SCENE_SECTION_OBJECTS;
 			continue;
 		};
+		if (line == "[MAP]")
+		{
+			section = SCENE_SECTION_MAP;
+			continue;
+		};
 		if (line[0] == '[')
 		{
 			section = SCENE_SECTION_UNKNOWN;
@@ -232,6 +267,9 @@ void CPlayScene::Load()
 			break;
 		case SCENE_SECTION_OBJECTS:
 			_ParseSection_OBJECTS(line);
+			break;
+		case SCENE_SECTION_MAP:
+			_ParseSection_MAP(line);
 			break;
 		}
 	}
@@ -278,6 +316,10 @@ void CPlayScene::Update(DWORD dt)
 
 void CPlayScene::Render()
 {
+	if (map != nullptr)
+	{
+		map->Draw();
+	}
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 }
