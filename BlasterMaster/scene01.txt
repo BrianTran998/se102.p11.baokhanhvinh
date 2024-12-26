@@ -4,6 +4,7 @@ Jason.txt
 brick.txt
 AutoMover.txt
 Background.txt
+sophia.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type

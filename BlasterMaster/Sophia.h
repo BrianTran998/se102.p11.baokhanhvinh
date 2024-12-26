@@ -11,7 +11,7 @@
 
 #define SOPHIA_ACCEL_RUN_X 0.0007f
 
-#define SOPHIA_JUMP_SPEED_Y 0.5f
+#define SOPHIA_JUMP_SPEED_Y 0.6f
 
 #define SOPHIA_GRAVITY 0.002f
 
@@ -30,7 +30,7 @@
 
 #pragma region ANIMATION_ID
 
-#define ID_ANI_SOPHIA_STATE_DIE				-30000
+#define ID_ANI_SOPHIA_STATE_DIE				39999
 #define ID_ANI_SOPHIA_STATE_IDLE_LEFT		30001
 #define ID_ANI_SOPHIA_STATE_IDLE_RIGHT		30002
 
@@ -56,31 +56,25 @@
 
 class CSophia : public CGameObject
 {
-	BOOLEAN isSitting;
 	float maxVx;
 	float ax; // acceleration on x
 	float ay; // acceleration on y
+	int aniId = -1;
 
-	int level;
 	int untouchable;
 	ULONGLONG untouchable_start;
 	BOOLEAN isOnPlatform;
-	int coin;
-
-	int GetAniIdBig();
 
 public:
 	CSophia(float x, float y) : CGameObject(x, y)
 	{
-		isSitting = false;
-		maxVx = 0.0f;
+		maxVx = SOPHIA_RUNNING_SPEED;
 		ax = 0.0f;
 		ay = SOPHIA_GRAVITY;
 
 		untouchable = 0;
 		untouchable_start = -1;
 		isOnPlatform = false;
-		coin = 0;
 	}
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	void Render();
@@ -98,7 +92,6 @@ public:
 	void OnNoCollision(DWORD dt);
 	void OnCollisionWith(LPCOLLISIONEVENT e);
 
-	void SetLevel(int l);
 	void StartUntouchable()
 	{
 		untouchable = 1;

@@ -191,5 +191,8 @@
     <Text Include="Area1_v1.txt">
       <Filter>GameConfig\Scene</Filter>
     </Text>
+    <Text Include="sophia.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
   </ItemGroup>
 </Project>
