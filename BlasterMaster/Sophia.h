@@ -64,6 +64,8 @@ class CSophia : public CGameObject
 	ULONGLONG untouchable_start;
 	BOOLEAN isOnPlatform;
 
+	void OnCollisionWithWalker(LPCOLLISIONEVENT e);
+
 public:
 	CSophia(float x, float y) : CGameObject(x, y)
 	{
@@ -98,4 +100,5 @@ public:
 	}
 
 	void GetBoundingBox(float &left, float &top, float &right, float &bottom);
+	int hpCount = 8;
 };

@@ -3,6 +3,7 @@
 #include "debug.h"
 #include "Game.h"
 #include "Collision.h"
+#include "Walker.h"
 
 void CSophia::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -47,7 +48,6 @@ void CSophia::SetState(int state)
 {
 	if (this->state == SOPHIA_STATE_DIE)
 		return;
-	DebugOutTitle(L"state: %d", state);
 	switch (state)
 	{
 	case SOPHIA_STATE_IDLE:
@@ -228,6 +228,20 @@ void CSophia::OnCollisionWith(LPCOLLISIONEVENT e)
 	else if (e->nx != 0 && e->obj->IsBlocking())
 	{
 		vx = 0;
+	}
+
+	if (dynamic_cast<CWalker *>(e->obj))
+		OnCollisionWithWalker(e);
+}
+
+void CSophia::OnCollisionWithWalker(LPCOLLISIONEVENT e)
+{
+	CWalker *walker = dynamic_cast<CWalker *>(e->obj);
+
+	if ((e->ny != 0 || e->nx != 0) && hpCount >= 0)
+	{
+		hpCount -= 1;
+		DebugOutTitle(L"HP: %d", hpCount);
 	}
 }
 
