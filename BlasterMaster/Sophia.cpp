@@ -4,6 +4,8 @@
 #include "Game.h"
 #include "Collision.h"
 #include "Walker.h"
+#include "Jason.h"
+#include "PlayScene.h"
 
 void CSophia::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -39,6 +41,10 @@ void CSophia::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 void CSophia::Render()
 {
+	if (isDisplaySophia == 0)
+	{
+		return;
+	}
 	CAnimations *animations = CAnimations::GetInstance();
 
 	animations->Get(aniId)->Render(x, y);
@@ -136,6 +142,7 @@ void CSophia::SetKey(int KeyCode, int KeyState)
 			break;
 
 		case SOPHIA_STATE_IDLE:
+		{
 			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform)
 				this->SetState(SOPHIA_STATE_JUMP);
 			else if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform)
@@ -144,9 +151,18 @@ void CSophia::SetKey(int KeyCode, int KeyState)
 				this->SetState(SOPHIA_STATE_RUNNING_LEFT);
 			else if (KeyCode == DIK_RIGHT)
 				this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
-			if (KeyCode == DIK_UP)
+			else if (KeyCode == DIK_UP)
 				this->SetState(SOPHIA_STATE_GUNUP);
-			break;
+			if (KeyCode == DIK_LSHIFT)
+			{
+				isDisplaySophia = 0;
+				CSophia *sophia = (CSophia *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+				CJason *jason = (CJason *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer2();
+				jason->SetPosition(sophia->x, sophia->y - 10);
+				jason->isDisplayJason = 1;
+			}
+		}
+		break;
 
 		case SOPHIA_STATE_RUNNING_LEFT:
 			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform)

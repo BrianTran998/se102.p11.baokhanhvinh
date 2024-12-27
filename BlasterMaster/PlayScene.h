@@ -12,8 +12,8 @@
 class CPlayScene : public CScene
 {
 protected:
-	// A play scene has to have player, right?
 	LPGAMEOBJECT player;
+	LPGAMEOBJECT player2;
 
 	vector<LPGAMEOBJECT> objects;
 
@@ -35,6 +35,20 @@ public:
 	virtual void Unload();
 
 	LPGAMEOBJECT GetPlayer() { return player; }
+	LPGAMEOBJECT GetPlayer2() { return player2; }
+	LPGAMEOBJECT GetActivePlayer()
+	{
+		CSophia *sophia = (CSophia *)player;
+		CJason *jason = (CJason *)player2;
+		if (jason->isDisplayJason == 1)
+		{
+			return player2;
+		}
+		else
+		{
+			return player;
+		}
+	}
 
 	void Clear();
 	void PurgeDeletedObjects();

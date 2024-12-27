@@ -101,4 +101,5 @@ public:
 
 	void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	int hpCount = 8;
+	int isDisplaySophia = 1;
 };

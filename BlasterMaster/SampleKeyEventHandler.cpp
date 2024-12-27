@@ -6,22 +6,25 @@
 #include "Jason.h"
 #include "Sophia.h"
 #include "PlayScene.h"
+#include <any>
 
 void CSampleKeyHandler::OnKeyDown(int KeyCode)
 {
-	CSophia *sophia = (CSophia *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	CSophia *sophia = (CSophia *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetActivePlayer();
 	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 	switch (KeyCode)
 	{
 	case DIK_S:
 		sophia->SetKey(DIK_S, 0);
 		break;
+	case DIK_LSHIFT:
+		sophia->SetKey(DIK_LSHIFT, 0);
 	}
 }
 
 void CSampleKeyHandler::OnKeyUp(int KeyCode)
 {
-	CSophia *sophia = (CSophia *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	CSophia *sophia = (CSophia *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetActivePlayer();
 	DebugOut(L"[INFO] KeyUp: %d\n", KeyCode);
 	switch (KeyCode)
 	{
@@ -39,7 +42,7 @@ void CSampleKeyHandler::OnKeyUp(int KeyCode)
 
 void CSampleKeyHandler::KeyState(BYTE *states)
 {
-	CSophia *sophia = (CSophia *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	CSophia *sophia = (CSophia *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetActivePlayer();
 	CGame *game = CGame::GetInstance();
 
 	if (game->IsKeyDown(DIK_RIGHT))
