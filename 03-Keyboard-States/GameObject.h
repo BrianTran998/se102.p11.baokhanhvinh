@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <d3dx10.h>
 #include <vector>
+#include "Common.h"
 
 using namespace std;
 
@@ -12,6 +13,9 @@ protected:
 	//Location
 	float x; 
 	float y;
+	//Size
+	int w = 0;
+	int h = 0;
 	//Velocity
 	float vx;
 	float vy;
@@ -25,6 +29,8 @@ public:
 
 	void SetState(int state) { this->state = state; }
 	int GetState() { return this->state; }
+
+	bool isInSceneNode(float scenex, float sceney, float scenew, float sceneh);
 
 	CGameObject();
 	CGameObject(float x, float y):CGameObject() { this->x = x; this->y = y; }

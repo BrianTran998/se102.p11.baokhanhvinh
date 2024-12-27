@@ -1,4 +1,7 @@
 #include "Animation.h"
+#include "CCamera.h"
+
+extern CCamera* camera;
 
 void CAnimation::Add(int spriteId, DWORD time)
 {
@@ -12,6 +15,7 @@ void CAnimation::Add(int spriteId, DWORD time)
 
 void CAnimation::Render(float x, float y)
 {
+	camera->Transition(x, y);
 	ULONGLONG now = GetTickCount64();
 	if (currentFrame == -1)
 	{

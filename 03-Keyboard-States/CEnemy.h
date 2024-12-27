@@ -18,7 +18,6 @@ class CEnemy : public CGameObject
 public:
 	CEnemy() : CGameObject() {};
 	CEnemy(float x, float y) : CGameObject(x, y) {};
-	virtual void LoadResource() = 0;
 
 	~CEnemy() {}
 };

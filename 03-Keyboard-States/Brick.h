@@ -11,6 +11,9 @@
 extern CCamera* camera;
 
 class CBrick : public CGameObject {
+protected:
+	int w = 16;
+	int h = 16;
 public:
 	CBrick(float x, float y) : CGameObject(x, y) {}
 	void Render();
