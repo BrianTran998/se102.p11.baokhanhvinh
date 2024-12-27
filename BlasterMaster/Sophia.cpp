@@ -4,7 +4,7 @@
 #include "Game.h"
 #include "Collision.h"
 
-void CSophia::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+void CSophia::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	vy += ay * dt;
 	vx += ax * dt;
@@ -26,9 +26,10 @@ void CSophia::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		{
 			x = SOPHIA_BBOX_WIDTH;
 		}
-		else if (x >= BackBufferWidth - SOPHIA_BBOX_WIDTH)
+		// Temp hard code for world width is 1725
+		else if (x >= 1725)
 		{
-			x = (float)(BackBufferWidth - SOPHIA_BBOX_WIDTH);
+			x = 1725;
 		}
 	}
 
@@ -37,7 +38,7 @@ void CSophia::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void CSophia::Render()
 {
-	CAnimations* animations = CAnimations::GetInstance();
+	CAnimations *animations = CAnimations::GetInstance();
 
 	animations->Get(aniId)->Render(x, y);
 }
@@ -46,6 +47,7 @@ void CSophia::SetState(int state)
 {
 	if (this->state == SOPHIA_STATE_DIE)
 		return;
+	DebugOutTitle(L"state: %d", state);
 	switch (state)
 	{
 	case SOPHIA_STATE_IDLE:
@@ -53,13 +55,17 @@ void CSophia::SetState(int state)
 		vx = 0.0f;
 		if (isOnPlatform)
 		{
-			if (nx < 0) aniId = ID_ANI_SOPHIA_STATE_IDLE_LEFT;
-			else aniId = ID_ANI_SOPHIA_STATE_IDLE_RIGHT;
+			if (nx < 0)
+				aniId = ID_ANI_SOPHIA_STATE_IDLE_LEFT;
+			else
+				aniId = ID_ANI_SOPHIA_STATE_IDLE_RIGHT;
 		}
 		else
 		{
-			if (nx < 0) aniId = ID_ANI_SOPHIA_STATE_JUMP_LEFT;
-			else aniId = ID_ANI_SOPHIA_STATE_JUMP_RIGHT;
+			if (nx < 0)
+				aniId = ID_ANI_SOPHIA_STATE_JUMP_LEFT;
+			else
+				aniId = ID_ANI_SOPHIA_STATE_JUMP_RIGHT;
 		}
 		break;
 
@@ -67,18 +73,24 @@ void CSophia::SetState(int state)
 		maxVx = -SOPHIA_RUNNING_SPEED;
 		ax = -SOPHIA_ACCEL_RUN_X;
 		nx = -1;
-		if (vx * ax < 0) aniId = ID_ANI_SOPHIA_STATE_TURNING_LEFT;
-		else if (isOnPlatform) aniId = ID_ANI_SOPHIA_STATE_RUNNING_LEFT;
-		else aniId = ID_ANI_SOPHIA_STATE_JUMP_LEFT;
+		if (vx * ax < 0)
+			aniId = ID_ANI_SOPHIA_STATE_TURNING_LEFT;
+		else if (isOnPlatform)
+			aniId = ID_ANI_SOPHIA_STATE_RUNNING_LEFT;
+		else
+			aniId = ID_ANI_SOPHIA_STATE_JUMP_LEFT;
 		break;
 
 	case SOPHIA_STATE_RUNNING_RIGHT:
 		maxVx = SOPHIA_RUNNING_SPEED;
 		ax = SOPHIA_ACCEL_RUN_X;
 		nx = 1;
-		if (vx * ax < 0) aniId = ID_ANI_SOPHIA_STATE_TURNING_RIGHT;
-		else if (isOnPlatform) aniId = ID_ANI_SOPHIA_STATE_RUNNING_RIGHT;
-		else aniId = ID_ANI_SOPHIA_STATE_JUMP_RIGHT;
+		if (vx * ax < 0)
+			aniId = ID_ANI_SOPHIA_STATE_TURNING_RIGHT;
+		else if (isOnPlatform)
+			aniId = ID_ANI_SOPHIA_STATE_RUNNING_RIGHT;
+		else
+			aniId = ID_ANI_SOPHIA_STATE_JUMP_RIGHT;
 		break;
 
 	case SOPHIA_STATE_JUMP:
@@ -86,20 +98,24 @@ void CSophia::SetState(int state)
 		{
 			vy = -SOPHIA_JUMP_SPEED_Y;
 		}
-		if (nx < 0) aniId = ID_ANI_SOPHIA_STATE_JUMP_LEFT;
-		else aniId = ID_ANI_SOPHIA_STATE_JUMP_RIGHT;
+		if (nx < 0)
+			aniId = ID_ANI_SOPHIA_STATE_JUMP_LEFT;
+		else
+			aniId = ID_ANI_SOPHIA_STATE_JUMP_RIGHT;
 		break;
 
 	case SOPHIA_STATE_RELEASE_JUMP:
 		if (vy > 0)
 			vy += SOPHIA_JUMP_SPEED_Y / 2;
 		break;
-	
+
 	case SOPHIA_STATE_GUNUP:
 		ax = 0.0f;
 		vx = 0.0f;
-		if (nx < 0) aniId = ID_ANI_SOPHIA_STATE_GUNUP_LEFT;
-		else aniId = ID_ANI_SOPHIA_STATE_GUNUP_RIGHT;
+		if (nx < 0)
+			aniId = ID_ANI_SOPHIA_STATE_GUNUP_LEFT;
+		else
+			aniId = ID_ANI_SOPHIA_STATE_GUNUP_RIGHT;
 		break;
 	}
 
@@ -120,48 +136,75 @@ void CSophia::SetKey(int KeyCode, int KeyState)
 			break;
 
 		case SOPHIA_STATE_IDLE:
-			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform) this->SetState(SOPHIA_STATE_JUMP);
-			else if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform) this->SetState(SOPHIA_STATE_RELEASE_JUMP);
-			if (KeyCode == DIK_LEFT) this->SetState(SOPHIA_STATE_RUNNING_LEFT);
-			else if (KeyCode == DIK_RIGHT) this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
-			if (KeyCode == DIK_UP) this->SetState(SOPHIA_STATE_GUNUP);
+			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform)
+				this->SetState(SOPHIA_STATE_JUMP);
+			else if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform)
+				this->SetState(SOPHIA_STATE_RELEASE_JUMP);
+			if (KeyCode == DIK_LEFT)
+				this->SetState(SOPHIA_STATE_RUNNING_LEFT);
+			else if (KeyCode == DIK_RIGHT)
+				this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
+			if (KeyCode == DIK_UP)
+				this->SetState(SOPHIA_STATE_GUNUP);
 			break;
 
 		case SOPHIA_STATE_RUNNING_LEFT:
-			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform) this->SetState(SOPHIA_STATE_JUMP);
-			else if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform) this->SetState(SOPHIA_STATE_RELEASE_JUMP);
-			if (KeyCode == DIK_LEFT) this->SetState(SOPHIA_STATE_RUNNING_LEFT);
-			else if (KeyCode == DIK_RIGHT) this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
-			if (KeyCode == DIK_UP) this->SetState(SOPHIA_STATE_GUNUP);
+			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform)
+				this->SetState(SOPHIA_STATE_JUMP);
+			else if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform)
+				this->SetState(SOPHIA_STATE_RELEASE_JUMP);
+			if (KeyCode == DIK_LEFT)
+				this->SetState(SOPHIA_STATE_RUNNING_LEFT);
+			else if (KeyCode == DIK_RIGHT)
+				this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
+			if (KeyCode == DIK_UP)
+				this->SetState(SOPHIA_STATE_GUNUP);
 			break;
-		
+
 		case SOPHIA_STATE_RUNNING_RIGHT:
-			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform) this->SetState(SOPHIA_STATE_JUMP);
-			else if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform) this->SetState(SOPHIA_STATE_RELEASE_JUMP);
-			if (KeyCode == DIK_LEFT) this->SetState(SOPHIA_STATE_RUNNING_LEFT);
-			else if (KeyCode == DIK_RIGHT) this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
-			if (KeyCode == DIK_UP) this->SetState(SOPHIA_STATE_GUNUP);
+			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform)
+				this->SetState(SOPHIA_STATE_JUMP);
+			else if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform)
+				this->SetState(SOPHIA_STATE_RELEASE_JUMP);
+			if (KeyCode == DIK_LEFT)
+				this->SetState(SOPHIA_STATE_RUNNING_LEFT);
+			else if (KeyCode == DIK_RIGHT)
+				this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
+			if (KeyCode == DIK_UP)
+				this->SetState(SOPHIA_STATE_GUNUP);
 			break;
 
 		case SOPHIA_STATE_JUMP:
-			if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform) this->SetState(SOPHIA_STATE_RELEASE_JUMP);
-			if (KeyCode == DIK_LEFT) this->SetState(SOPHIA_STATE_RUNNING_LEFT);
-			else if (KeyCode == DIK_RIGHT) this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
-			if (KeyCode == DIK_UP) this->SetState(SOPHIA_STATE_GUNUP);
+			if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform)
+				this->SetState(SOPHIA_STATE_RELEASE_JUMP);
+			if (KeyCode == DIK_LEFT)
+				this->SetState(SOPHIA_STATE_RUNNING_LEFT);
+			else if (KeyCode == DIK_RIGHT)
+				this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
+			if (KeyCode == DIK_UP)
+				this->SetState(SOPHIA_STATE_GUNUP);
 			break;
 
 		case SOPHIA_STATE_RELEASE_JUMP:
-			if (KeyCode == DIK_LEFT) this->SetState(SOPHIA_STATE_RUNNING_LEFT);
-			else if (KeyCode == DIK_RIGHT) this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
-			if (KeyCode == DIK_UP) this->SetState(SOPHIA_STATE_GUNUP);
+			if (KeyCode == DIK_LEFT)
+				this->SetState(SOPHIA_STATE_RUNNING_LEFT);
+			else if (KeyCode == DIK_RIGHT)
+				this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
+			if (KeyCode == DIK_UP)
+				this->SetState(SOPHIA_STATE_GUNUP);
 			break;
 
 		case SOPHIA_STATE_GUNUP:
-			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform) this->SetState(SOPHIA_STATE_JUMP);
-			else if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform) this->SetState(SOPHIA_STATE_RELEASE_JUMP);
-			if (KeyCode == DIK_LEFT) this->SetState(SOPHIA_STATE_RUNNING_LEFT);
-			else if (KeyCode == DIK_RIGHT) this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
-			if (KeyCode == DIK_UP) this->SetState(SOPHIA_STATE_GUNUP);
+			if (KeyCode == DIK_S && KeyState == 0 && isOnPlatform)
+				this->SetState(SOPHIA_STATE_JUMP);
+			else if (KeyCode == DIK_S && KeyState == 1 && !isOnPlatform)
+				this->SetState(SOPHIA_STATE_RELEASE_JUMP);
+			if (KeyCode == DIK_LEFT)
+				this->SetState(SOPHIA_STATE_RUNNING_LEFT);
+			else if (KeyCode == DIK_RIGHT)
+				this->SetState(SOPHIA_STATE_RUNNING_RIGHT);
+			if (KeyCode == DIK_UP)
+				this->SetState(SOPHIA_STATE_GUNUP);
 			break;
 		}
 	}
@@ -188,10 +231,10 @@ void CSophia::OnCollisionWith(LPCOLLISIONEVENT e)
 	}
 }
 
-void CSophia::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+void CSophia::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
-	left = x;
-	top = y;
+	left = x - SOPHIA_BBOX_WIDTH / 2;
+	top = y - SOPHIA_BBOX_HEIGHT / 2;
 	right = left + SOPHIA_BBOX_WIDTH;
-	bottom = top - SOPHIA_BBOX_HEIGHT;
+	bottom = top + SOPHIA_BBOX_HEIGHT;
 }

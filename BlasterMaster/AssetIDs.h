@@ -11,6 +11,7 @@
 #define OBJECT_TYPE_JASON 0
 #define OBJECT_TYPE_BRICK 1
 #define OBJECT_TYPE_AUTOMOVER 2
+#define OBJECT_TYPE_SOPHIA 4
 
 #pragma region MARIO
 

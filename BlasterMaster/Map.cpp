@@ -63,7 +63,7 @@ void Map::Draw()
 	{
 		firstcol = 0;
 	}
-	int lastcol = firstcol + 24;
+	int lastcol = firstcol + 28;
 	DebugOut(L"Cmx: %d\n", GetMapWidth());
 	for (UINT i = 0; i < Num_Rows; i++)
 	{

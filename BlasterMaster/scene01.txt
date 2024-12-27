@@ -9,7 +9,7 @@ walker.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type
-# type: 0 = Jason , 1 = Brick, 2 = AutoMover, 3 = Background
+# type: 0 = Jason , 1 = Brick, 2 = AutoMover, 3 = Background, 4 = Sophia
 # See OBJECT_TYPE constants in AssetIDs.h
 
 # BRICKS
@@ -22,8 +22,8 @@ walker.txt
 1	532	230	1
 1	608	216	7
 
-# Jason
-0	80	50
+# Sophia
+4	120	190
 
 # AutoMover
 2	300	150
