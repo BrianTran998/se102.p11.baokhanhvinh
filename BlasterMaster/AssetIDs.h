@@ -6,11 +6,11 @@
 
 #define ID_TEX_JASON 0
 #define ID_TEX_ENEMY 10
-#define ID_TEX_MISC 20
 
 #define OBJECT_TYPE_JASON 0
 #define OBJECT_TYPE_BRICK 1
 #define OBJECT_TYPE_AUTOMOVER 2
+#define OBJECT_TYPE_WALKER 3
 #define OBJECT_TYPE_SOPHIA 4
 
 #pragma region MARIO

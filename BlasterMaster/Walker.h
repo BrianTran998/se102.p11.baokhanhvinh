@@ -38,7 +38,7 @@ protected:
 	float maxVx;
 	float ax;
 	float ay;
-	int aniId = WALKER_STATE_WALKING_RIGHT;
+	int aniId = ID_ANI_WALKER_WALKING_RIGHT;
 
 public:
 	CWalker(float x, float y) : CGameObject(x, y)

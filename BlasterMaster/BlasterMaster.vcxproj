@@ -196,7 +196,6 @@
   <ItemGroup>
     <Text Include="Area1_v1.txt" />
     <Text Include="AutoMover.txt" />
-    <Text Include="Background.txt" />
     <Text Include="brick.txt" />
     <Text Include="Jason.txt" />
     <Text Include="scene01.txt" />

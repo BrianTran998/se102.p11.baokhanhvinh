@@ -185,9 +185,6 @@
     <Text Include="AutoMover.txt">
       <Filter>GameConfig\GameObject</Filter>
     </Text>
-    <Text Include="Background.txt">
-      <Filter>GameConfig\GameObject</Filter>
-    </Text>
     <Text Include="brick.txt">
       <Filter>GameConfig\GameObject</Filter>
     </Text>

@@ -128,12 +128,15 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			return;
 		}
 		obj = new CSophia(x, y);
-		player = (CSophia*)obj;
+		player = (CSophia *)obj;
 
 		DebugOut(L"[INFO] Player object has been created!\n");
 		break;
 	case OBJECT_TYPE_AUTOMOVER:
 		obj = new CAutoMover(x, y);
+		break;
+	case OBJECT_TYPE_WALKER:
+		obj = new CWalker(x, y);
 		break;
 	case OBJECT_TYPE_BRICK:
 	{

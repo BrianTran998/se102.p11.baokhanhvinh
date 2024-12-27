@@ -56,10 +56,10 @@ void CWalker::OnCollisionWith(LPCOLLISIONEVENT e)
 
 void CWalker::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	left = x;
-	top = y;
+	left = x - WALKER_BBOX_WIDTH / 2;
+	top = y - WALKER_BBOX_HEIGHT / 2;
 	right = left + WALKER_BBOX_WIDTH;
-	bottom = top - WALKER_BBOX_HEIGHT;
+	bottom = top + WALKER_BBOX_HEIGHT;
 }
 
 void CWalker::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
@@ -77,9 +77,10 @@ void CWalker::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		{
 			x = WALKER_BBOX_WIDTH;
 		}
-		else if (x >= BackBufferWidth - WALKER_BBOX_WIDTH)
+		// Temp hard code for world width is 1725
+		else if (x >= 1725)
 		{
-			x = (float)(BackBufferWidth - WALKER_BBOX_WIDTH);
+			x = 1725;
 		}
 	}
 

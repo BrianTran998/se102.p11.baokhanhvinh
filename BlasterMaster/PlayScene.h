@@ -7,14 +7,13 @@
 #include "Jason.h"
 #include "Sophia.h"
 #include "AutoMover.h"
-//#include "Koopas.h"
+#include "Walker.h"
 
-
-class CPlayScene: public CScene
+class CPlayScene : public CScene
 {
-protected: 
-	// A play scene has to have player, right? 
-	LPGAMEOBJECT player;					
+protected:
+	// A play scene has to have player, right?
+	LPGAMEOBJECT player;
 
 	vector<LPGAMEOBJECT> objects;
 
@@ -26,8 +25,8 @@ protected:
 	void _ParseSection_MAP(string line);
 
 	void LoadAssets(LPCWSTR assetFile);
-	
-public: 
+
+public:
 	CPlayScene(int id, LPCWSTR filePath);
 
 	virtual void Load();
@@ -40,8 +39,7 @@ public:
 	void Clear();
 	void PurgeDeletedObjects();
 
-	static bool IsGameObjectDeleted(const LPGAMEOBJECT& o);
+	static bool IsGameObjectDeleted(const LPGAMEOBJECT &o);
 };
 
-typedef CPlayScene* LPPLAYSCENE;
-
+typedef CPlayScene *LPPLAYSCENE;
