@@ -30,9 +30,10 @@ void CJason::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		{
 			x = JASON_BIG_BBOX_WIDTH;
 		}
-		else if (x >= BackBufferWidth - JASON_BIG_BBOX_WIDTH)
+		// Temp hard code for world width is 1725
+		else if (x >= 1725)
 		{
-			x = (float)(BackBufferWidth - JASON_BIG_BBOX_WIDTH);
+			x = 1725;
 		}
 	}
 
@@ -61,7 +62,7 @@ void CJason::OnCollisionWith(LPCOLLISIONEVENT e)
 }
 
 //
-// Get animdation ID for big Mario
+// Get animdation ID for big Jason
 //
 int CJason::GetAniIdBig()
 {
