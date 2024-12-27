@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "Brick.h"
 #include "Jason.h"
+#include "Sophia.h"
 #include "AutoMover.h"
 //#include "Koopas.h"
 

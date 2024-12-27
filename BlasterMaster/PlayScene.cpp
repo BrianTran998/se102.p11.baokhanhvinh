@@ -113,11 +113,22 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_JASON:
 		if (player != NULL)
 		{
-			DebugOut(L"[ERROR] MARIO object was created before!\n");
+			DebugOut(L"[ERROR] JASON object was created before!\n");
 			return;
 		}
 		obj = new CJason(x, y);
 		player = (CJason *)obj;
+
+		DebugOut(L"[INFO] Player object has been created!\n");
+		break;
+	case OBJECT_TYPE_SOPHIA:
+		if (player != NULL)
+		{
+			DebugOut(L"[ERROR] SOPHIA object was created before!\n");
+			return;
+		}
+		obj = new CSophia(x, y);
+		player = (CSophia*)obj;
 
 		DebugOut(L"[INFO] Player object has been created!\n");
 		break;

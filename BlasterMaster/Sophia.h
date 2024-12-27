@@ -30,22 +30,21 @@
 
 #pragma region ANIMATION_ID
 
-#define ID_ANI_SOPHIA_STATE_DIE				39999
-#define ID_ANI_SOPHIA_STATE_IDLE_LEFT		30001
-#define ID_ANI_SOPHIA_STATE_IDLE_RIGHT		30002
+#define ID_ANI_SOPHIA_STATE_DIE 39999
+#define ID_ANI_SOPHIA_STATE_IDLE_LEFT 30001
+#define ID_ANI_SOPHIA_STATE_IDLE_RIGHT 30002
 
-#define ID_ANI_SOPHIA_STATE_RUNNING_LEFT	30003
-#define ID_ANI_SOPHIA_STATE_RUNNING_RIGHT	30004
+#define ID_ANI_SOPHIA_STATE_RUNNING_LEFT 30003
+#define ID_ANI_SOPHIA_STATE_RUNNING_RIGHT 30004
 
-#define ID_ANI_SOPHIA_STATE_TURNING_LEFT	30005
-#define ID_ANI_SOPHIA_STATE_TURNING_RIGHT	30006
+#define ID_ANI_SOPHIA_STATE_TURNING_LEFT 30005
+#define ID_ANI_SOPHIA_STATE_TURNING_RIGHT 30006
 
-#define ID_ANI_SOPHIA_STATE_JUMP_LEFT		30007
-#define ID_ANI_SOPHIA_STATE_JUMP_RIGHT		30008
+#define ID_ANI_SOPHIA_STATE_JUMP_LEFT 30007
+#define ID_ANI_SOPHIA_STATE_JUMP_RIGHT 30008
 
-
-#define ID_ANI_SOPHIA_STATE_GUNUP_LEFT		30009
-#define ID_ANI_SOPHIA_STATE_GUNUP_RIGHT		30010
+#define ID_ANI_SOPHIA_STATE_GUNUP_LEFT 30009
+#define ID_ANI_SOPHIA_STATE_GUNUP_RIGHT 30010
 
 #pragma endregion
 
@@ -59,7 +58,7 @@ class CSophia : public CGameObject
 	float maxVx;
 	float ax; // acceleration on x
 	float ay; // acceleration on y
-	int aniId = -1;
+	int aniId = ID_ANI_SOPHIA_STATE_IDLE_RIGHT;
 
 	int untouchable;
 	ULONGLONG untouchable_start;
@@ -76,7 +75,7 @@ public:
 		untouchable_start = -1;
 		isOnPlatform = false;
 	}
-	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
+	void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects);
 	void Render();
 	void SetState(int state);
 
@@ -98,5 +97,5 @@ public:
 		untouchable_start = GetTickCount64();
 	}
 
-	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+	void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 };
