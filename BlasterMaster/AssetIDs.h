@@ -13,7 +13,7 @@
 #define OBJECT_TYPE_WALKER 3
 #define OBJECT_TYPE_SOPHIA 4
 
-#pragma region MARIO
+#pragma region JASON
 
 #define ID_SPRITE_JASON 10000
 #define ID_SPRITE_JASON_BIG (ID_SPRITE_JASON + 1000)
