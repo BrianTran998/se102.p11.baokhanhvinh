@@ -69,9 +69,6 @@
     <ClCompile Include="CEnemy.cpp">
       <Filter>GameObject\Character\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="CWalker.cpp">
-      <Filter>GameObject\Character\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Brick.cpp">
       <Filter>GameObject\Tileset</Filter>
     </ClCompile>
@@ -126,9 +123,6 @@
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="CEnemy.h">
-      <Filter>GameObject\Character\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="CWalker.h">
       <Filter>GameObject\Character\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Brick.h">

@@ -5,6 +5,7 @@ brick.txt
 AutoMover.txt
 Background.txt
 sophia.txt
+walker.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type

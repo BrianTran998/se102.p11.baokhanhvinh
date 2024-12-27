@@ -135,7 +135,6 @@
     <ClCompile Include="CJasonSmall.cpp" />
     <ClCompile Include="CLadder.cpp" />
     <ClCompile Include="CPlayer.cpp" />
-    <ClCompile Include="CWalker.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -154,7 +153,6 @@
     <ClInclude Include="CJasonSmall.h" />
     <ClInclude Include="CLadder.h" />
     <ClInclude Include="CPlayer.h" />
-    <ClInclude Include="CWalker.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Game.h" />

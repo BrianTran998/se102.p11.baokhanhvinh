@@ -166,6 +166,7 @@
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Walker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Walker.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Area1_v1.txt" />
@@ -200,6 +202,7 @@
     <Text Include="scene01.txt" />
     <Text Include="SceneConfig.txt" />
     <Text Include="sophia.txt" />
+    <Text Include="walker.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

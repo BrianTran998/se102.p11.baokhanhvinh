@@ -26,6 +26,10 @@
 #define ID_ANI_WALKER_IDLE_RIGHT		40002
 #define ID_ANI_WALKER_WALKING_LEFT		40003
 #define ID_ANI_WALKER_WALKING_RIGHT		40004
+#define ID_ANI_WALKER_DIE				49999
+
+#define WALKER_BBOX_WIDTH 13
+#define WALKER_BBOX_HEIGHT 25
 
 class CWalker : public CGameObject
 {
@@ -34,11 +38,12 @@ protected:
 	float maxVx;
 	float ax;
 	float ay;
+	int aniId = WALKER_STATE_WALKING_RIGHT;
 
 public:
 	CWalker(float x, float y) : CGameObject(x, y)
 	{
-		maxVx = 0.0f;
+		maxVx = WALKER_WALKING_SPEED;
 		ax = 0.0f;
 		ay = WALKER_GRAVITY;
 
@@ -56,10 +61,10 @@ public:
 
 	int IsBlocking() { return (state != WALKER_STATE_DIE); }
 
+	void OnNoCollision(DWORD dt);
 	void OnCollisionWith(LPCOLLISIONEVENT e);
 
 	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-	
+
 	~CWalker() {}
 };
-

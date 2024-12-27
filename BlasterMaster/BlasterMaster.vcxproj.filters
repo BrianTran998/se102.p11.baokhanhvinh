@@ -100,6 +100,9 @@
     <ClCompile Include="Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Walker.cpp">
+      <Filter>GameObject\Character\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -168,6 +171,9 @@
     <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Walker.h">
+      <Filter>GameObject\Character\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SceneConfig.txt">
@@ -192,6 +198,9 @@
       <Filter>GameConfig\Scene</Filter>
     </Text>
     <Text Include="sophia.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
+    <Text Include="walker.txt">
       <Filter>GameConfig\GameObject</Filter>
     </Text>
   </ItemGroup>

@@ -169,8 +169,9 @@ void CSophia::SetKey(int KeyCode, int KeyState)
 
 void CSophia::OnNoCollision(DWORD dt)
 {
-	vx = 0.0f;
-	vy = 0.0f;
+	x += vx * dt;
+	y += vy * dt;
+	isOnPlatform = false;
 }
 
 void CSophia::OnCollisionWith(LPCOLLISIONEVENT e)

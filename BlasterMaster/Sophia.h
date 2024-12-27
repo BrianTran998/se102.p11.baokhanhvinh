@@ -59,7 +59,7 @@ class CSophia : public CGameObject
 	float maxVx;
 	float ax; // acceleration on x
 	float ay; // acceleration on y
-	int aniId = -1;
+	int aniId = SOPHIA_STATE_RUNNING_LEFT;
 
 	int untouchable;
 	ULONGLONG untouchable_start;
