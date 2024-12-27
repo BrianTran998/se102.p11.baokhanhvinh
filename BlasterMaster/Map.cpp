@@ -50,7 +50,7 @@ void Map::LoadMap()
 		for (UINT j = 0; j < num_col_read; j++)
 		{
 			int id_Sprite = Id + id_sprite;
-			sprites->Add(id_Sprite, Tile_Width * j, Tile_Height * i, Tile_Width * (j + 1), Tile_Height * (i + 1), texMap, 0);
+			sprites->Add(id_Sprite, Tile_Width * j, Tile_Height * i, (Tile_Width * j) + Tile_Width, (Tile_Height * i) + Tile_Height, texMap, 0);
 			id_sprite = id_sprite + 1;
 		}
 	}
@@ -63,14 +63,14 @@ void Map::Draw()
 	{
 		firstcol = 0;
 	}
-	int lastcol = firstcol + 20;
+	int lastcol = firstcol + 24;
 	DebugOut(L"Cmx: %d\n", GetMapWidth());
 	for (UINT i = 0; i < Num_Rows; i++)
 	{
 		for (UINT j = firstcol; j < lastcol; j++)
 		{
-			float x = Tile_Width * j + 8;
-			float y = Tile_Height * i + 8;
+			float x = Tile_Width * j + (Tile_Width / 2);
+			float y = Tile_Height * i + (Tile_Height / 2);
 			sprites->Get(tilemap[i][j] + Id)->Draw(x, y);
 		}
 	}

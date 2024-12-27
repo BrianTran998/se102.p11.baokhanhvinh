@@ -125,11 +125,41 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		obj = new CAutoMover(x, y);
 		break;
 	case OBJECT_TYPE_BRICK:
+	{
+		// Custom variables for Brick Object
+		float addLeftNum = (tokens.size() > 3 && !tokens[3].empty()) ? (float)atof(tokens[3].c_str()) : 0;
+		float addTopNum = (tokens.size() > 4 && !tokens[4].empty()) ? (float)atof(tokens[4].c_str()) : 0;
+		float addBottomNum = (tokens.size() > 5 && !tokens[5].empty()) ? (float)atof(tokens[5].c_str()) : 0;
+		if (addLeftNum > 0)
+		{
+			for (int i = 1; i <= addLeftNum; i++)
+			{
+				obj = new CBrick(x + i * BRICK_WIDTH, y);
+				obj->SetPosition(x + i * BRICK_WIDTH, y);
+				objects.push_back(obj);
+			}
+		}
+		if (addTopNum > 0)
+		{
+			for (int i = 1; i <= addTopNum; i++)
+			{
+				obj = new CBrick(x, y - i * BRICK_WIDTH);
+				obj->SetPosition(x, y - i * BRICK_WIDTH);
+				objects.push_back(obj);
+			}
+		}
+		if (addBottomNum > 0)
+		{
+			for (int i = 1; i <= addBottomNum; i++)
+			{
+				obj = new CBrick(x, y + i * BRICK_WIDTH);
+				obj->SetPosition(x, y + i * BRICK_WIDTH);
+				objects.push_back(obj);
+			}
+		}
 		obj = new CBrick(x, y);
-		break;
-	case OBJECT_TYPE_BACKGROUND:
-		obj = new CBrick(x, y, 1);
-		break;
+	}
+	break;
 
 	default:
 		DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
@@ -310,7 +340,7 @@ void CPlayScene::Update(DWORD dt)
 	if (cx < 0)
 		cx = 0;
 
-	CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
+	CGame::GetInstance()->SetCamPos(cx, 70.0f /*cy*/);
 	// PurgeDeletedObjects();
 }
 
