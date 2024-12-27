@@ -148,6 +148,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\03-Keyboard-States\CCamera.cpp" />
+    <ClCompile Include="..\03-Keyboard-States\CQuadTree.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Brick.cpp" />
@@ -168,6 +170,8 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\03-Keyboard-States\CCamera.h" />
+    <ClInclude Include="..\03-Keyboard-States\CQuadTree.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Animations.h" />

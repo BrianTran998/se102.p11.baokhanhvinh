@@ -16,6 +16,7 @@ public:
 	void Transition(float& objectx, float& objecty);
 	bool isObjectInCamera(float objectx, float objecty, float objectw, float objecth);
 	bool isInSceneNode(float scenex, float sceney, float scenew, float sceneh);
+	void getCameraPos(float &targetx, float &targety);
 
 	~CCamera() {}
 };

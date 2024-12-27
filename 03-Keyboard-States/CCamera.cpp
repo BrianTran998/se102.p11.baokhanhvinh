@@ -99,3 +99,9 @@ bool CCamera::isInSceneNode(float scenex, float sceney, float scenew, float scen
 	}
 	else return false;
 }
+
+void CCamera::getCameraPos(float& targetx, float& targety)
+{
+	targetx = x;
+	targety = y;
+}
