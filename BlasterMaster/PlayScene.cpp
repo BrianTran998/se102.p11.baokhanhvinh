@@ -111,25 +111,69 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	switch (object_type)
 	{
 	case OBJECT_TYPE_JASON:
-		if (player != NULL)
+		if (player2 != NULL)
 		{
-			DebugOut(L"[ERROR] MARIO object was created before!\n");
+			DebugOut(L"[ERROR] JASON object was created before!\n");
 			return;
 		}
 		obj = new CJason(x, y);
-		player = (CJason *)obj;
+		player2 = (CJason *)obj;
+
+		DebugOut(L"[INFO] Player object has been created!\n");
+		break;
+	case OBJECT_TYPE_SOPHIA:
+		if (player != NULL)
+		{
+			DebugOut(L"[ERROR] SOPHIA object was created before!\n");
+			return;
+		}
+		obj = new CSophia(x, y);
+		player = (CSophia *)obj;
 
 		DebugOut(L"[INFO] Player object has been created!\n");
 		break;
 	case OBJECT_TYPE_AUTOMOVER:
 		obj = new CAutoMover(x, y);
 		break;
+	case OBJECT_TYPE_WALKER:
+		obj = new CWalker(x, y);
+		break;
 	case OBJECT_TYPE_BRICK:
+	{
+		// Custom variables for Brick Object
+		float addLeftNum = (tokens.size() > 3 && !tokens[3].empty()) ? (float)atof(tokens[3].c_str()) : 0;
+		float addTopNum = (tokens.size() > 4 && !tokens[4].empty()) ? (float)atof(tokens[4].c_str()) : 0;
+		float addBottomNum = (tokens.size() > 5 && !tokens[5].empty()) ? (float)atof(tokens[5].c_str()) : 0;
+		if (addLeftNum > 0)
+		{
+			for (int i = 1; i <= addLeftNum; i++)
+			{
+				obj = new CBrick(x + i * BRICK_WIDTH, y);
+				obj->SetPosition(x + i * BRICK_WIDTH, y);
+				objects.push_back(obj);
+			}
+		}
+		if (addTopNum > 0)
+		{
+			for (int i = 1; i <= addTopNum; i++)
+			{
+				obj = new CBrick(x, y - i * BRICK_WIDTH);
+				obj->SetPosition(x, y - i * BRICK_WIDTH);
+				objects.push_back(obj);
+			}
+		}
+		if (addBottomNum > 0)
+		{
+			for (int i = 1; i <= addBottomNum; i++)
+			{
+				obj = new CBrick(x, y + i * BRICK_WIDTH);
+				obj->SetPosition(x, y + i * BRICK_WIDTH);
+				objects.push_back(obj);
+			}
+		}
 		obj = new CBrick(x, y);
-		break;
-	case OBJECT_TYPE_BACKGROUND:
-		obj = new CBrick(x, y, 1);
-		break;
+	}
+	break;
 
 	default:
 		DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
@@ -310,7 +354,7 @@ void CPlayScene::Update(DWORD dt)
 	if (cx < 0)
 		cx = 0;
 
-	CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
+	CGame::GetInstance()->SetCamPos(cx, 70.0f /*cy*/);
 	// PurgeDeletedObjects();
 }
 

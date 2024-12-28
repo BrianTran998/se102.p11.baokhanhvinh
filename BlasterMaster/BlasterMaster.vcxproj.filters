@@ -100,6 +100,9 @@
     <ClCompile Include="Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Walker.cpp">
+      <Filter>GameObject\Character\Enemies</Filter>
+    </ClCompile>
     <ClCompile Include="..\03-Keyboard-States\CCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -174,6 +177,9 @@
     <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Walker.h">
+      <Filter>GameObject\Character\Enemies</Filter>
+    </ClInclude>
     <ClInclude Include="..\03-Keyboard-States\CCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -191,9 +197,6 @@
     <Text Include="AutoMover.txt">
       <Filter>GameConfig\GameObject</Filter>
     </Text>
-    <Text Include="Background.txt">
-      <Filter>GameConfig\GameObject</Filter>
-    </Text>
     <Text Include="brick.txt">
       <Filter>GameConfig\GameObject</Filter>
     </Text>
@@ -204,6 +207,9 @@
       <Filter>GameConfig\Scene</Filter>
     </Text>
     <Text Include="sophia.txt">
+      <Filter>GameConfig\GameObject</Filter>
+    </Text>
+    <Text Include="walker.txt">
       <Filter>GameConfig\GameObject</Filter>
     </Text>
   </ItemGroup>

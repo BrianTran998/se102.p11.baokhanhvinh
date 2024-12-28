@@ -5,15 +5,15 @@
 #include "GameObject.h"
 #include "Brick.h"
 #include "Jason.h"
+#include "Sophia.h"
 #include "AutoMover.h"
-//#include "Koopas.h"
+#include "Walker.h"
 
-
-class CPlayScene: public CScene
+class CPlayScene : public CScene
 {
-protected: 
-	// A play scene has to have player, right? 
-	LPGAMEOBJECT player;					
+protected:
+	LPGAMEOBJECT player;
+	LPGAMEOBJECT player2;
 
 	vector<LPGAMEOBJECT> objects;
 
@@ -25,8 +25,8 @@ protected:
 	void _ParseSection_MAP(string line);
 
 	void LoadAssets(LPCWSTR assetFile);
-	
-public: 
+
+public:
 	CPlayScene(int id, LPCWSTR filePath);
 
 	virtual void Load();
@@ -35,12 +35,25 @@ public:
 	virtual void Unload();
 
 	LPGAMEOBJECT GetPlayer() { return player; }
+	LPGAMEOBJECT GetPlayer2() { return player2; }
+	LPGAMEOBJECT GetActivePlayer()
+	{
+		CSophia *sophia = (CSophia *)player;
+		CJason *jason = (CJason *)player2;
+		if (jason->isDisplayJason == 1)
+		{
+			return player2;
+		}
+		else
+		{
+			return player;
+		}
+	}
 
 	void Clear();
 	void PurgeDeletedObjects();
 
-	static bool IsGameObjectDeleted(const LPGAMEOBJECT& o);
+	static bool IsGameObjectDeleted(const LPGAMEOBJECT &o);
 };
 
-typedef CPlayScene* LPPLAYSCENE;
-
+typedef CPlayScene *LPPLAYSCENE;

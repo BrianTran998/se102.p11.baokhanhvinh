@@ -7,6 +7,8 @@
 #include "AutoMover.h"
 
 #include "Collision.h"
+#include "Sophia.h"
+#include "PlayScene.h"
 
 void CJason::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -30,9 +32,10 @@ void CJason::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		{
 			x = JASON_BIG_BBOX_WIDTH;
 		}
-		else if (x >= BackBufferWidth - JASON_BIG_BBOX_WIDTH)
+		// Temp hard code for world width is 1725
+		else if (x >= 1725)
 		{
-			x = (float)(BackBufferWidth - JASON_BIG_BBOX_WIDTH);
+			x = 1725;
 		}
 	}
 
@@ -61,7 +64,7 @@ void CJason::OnCollisionWith(LPCOLLISIONEVENT e)
 }
 
 //
-// Get animdation ID for big Mario
+// Get animdation ID for big Jason
 //
 int CJason::GetAniIdBig()
 {
@@ -145,6 +148,15 @@ void CJason::SetKey(int KeyCode, int KeyState)
 			break;
 		case DIK_DOWN:
 			break;
+		case DIK_LSHIFT:
+		{
+			isDisplayJason = 0;
+			CJason *jason = (CJason *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer2();
+			CSophia *sophia = (CSophia *)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+			sophia->SetPosition(jason->x, jason->y - 10);
+			sophia->isDisplaySophia = 1;
+		}
+		break;
 		}
 	}
 	if (KeyCode == DIK_S)
@@ -158,19 +170,15 @@ void CJason::SetKey(int KeyCode, int KeyState)
 
 void CJason::Render()
 {
+	if (isDisplayJason == 0)
+	{
+		return;
+	}
 	CAnimations *animations = CAnimations::GetInstance();
-	// int aniId = -1;
-
-	// if (state == JASON_STATE_DIE)
-	// 	aniId = ID_ANI_JASON_DIE;
-	// else if (level == JASON_LEVEL_BIG)
-	// 	aniId = GetAniIdBig();
 
 	animations->Get(GetAniIdBig())->Render(x, y);
 
 	// RenderBoundingBox();
-
-	// DebugOutTitle(L"Coins: %d", coin);
 }
 
 void CJason::SetState(int state)

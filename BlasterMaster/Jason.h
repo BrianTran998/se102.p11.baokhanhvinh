@@ -128,4 +128,5 @@ public:
 	}
 
 	void GetBoundingBox(float &left, float &top, float &right, float &bottom);
+	int isDisplayJason = 0;
 };
