@@ -14,19 +14,23 @@ void CWalker::SetState(int state)
 		else aniId = ID_ANI_WALKER_IDLE_RIGHT;
 		break;
 	case WALKER_STATE_WALKING_LEFT:
+		maxVx = -WALKER_WALKING_SPEED;
+		ax = -WALKER_ACCEL_WALK_X;
 		nx = -1;
-		vx = -WALKER_WALKING_SPEED;
 		aniId = ID_ANI_WALKER_WALKING_LEFT;
 		break;
 	case WALKER_STATE_WALKING_RIGHT:
+		maxVx = WALKER_WALKING_SPEED;
+		ax = WALKER_ACCEL_WALK_X;
 		nx = 1;
-		vx = WALKER_WALKING_SPEED;
 		aniId = ID_ANI_WALKER_WALKING_RIGHT;
 		break;
 	case WALKER_STATE_JUMP:
 		vy = WALKER_JUMP_SPEED_Y;
 		break;
 	}
+
+	CGameObject::SetState(state);
 }
 
 void CWalker::OnNoCollision(DWORD dt)
@@ -46,6 +50,8 @@ void CWalker::OnCollisionWith(LPCOLLISIONEVENT e)
 	}
 	else if (e->nx != 0 && e->obj->IsBlocking())
 	{
+		if (collisionTimeStart != 0) return;
+		collisionTimeStart += 1;
 		if (this->state == WALKER_STATE_WALKING_LEFT)
 		{
 			this->SetState(WALKER_STATE_WALKING_RIGHT);
@@ -64,6 +70,11 @@ void CWalker::GetBoundingBox(float& left, float& top, float& right, float& botto
 
 void CWalker::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+	if (collisionTimeStart != 0)
+	{
+		collisionTimeStart += dt;
+		if (collisionTimeStart > collisionTime) collisionTimeStart = 0;
+	}
 	vy += ay * dt;
 	vx += ax * dt;
 

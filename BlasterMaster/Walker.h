@@ -40,6 +40,9 @@ protected:
 	float ay;
 	int aniId = ID_ANI_WALKER_WALKING_RIGHT;
 
+	int collisionTimeStart = 0;
+	int collisionTime = 100;
+
 public:
 	CWalker(float x, float y) : CGameObject(x, y)
 	{
